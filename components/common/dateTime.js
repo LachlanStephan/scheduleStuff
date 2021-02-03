@@ -10,7 +10,7 @@ const DateTime = (props) => {
   });
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-col">
       <div className="text-sm p-2">{date.toLocaleDateString()}</div>
       <div className="text-sm p-2">{date.toLocaleTimeString()}</div>
     </div>

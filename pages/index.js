@@ -8,7 +8,7 @@ export default function App() {
       <div className="text-center min-h-screen">
         <Head>
           {" "}
-          <title>Diary App</title>
+          <title>scheduleStuff</title>
         </Head>
         <Home title="Welcome to scheduleStuff" />
       </div>

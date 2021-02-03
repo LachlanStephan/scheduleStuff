@@ -12,6 +12,9 @@ const Header = (props) => {
         <Link href="/login/login">
           <a className="p-2 hover:text-gray-300 text-green-500">Login</a>
         </Link>
+        <Link href="/register/register">
+          <a className="p-2 hover:text-gray-300 text-green-500">Register</a>
+        </Link>
       </main>
     </div>
   );
