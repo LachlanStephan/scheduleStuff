@@ -3,9 +3,8 @@ import DateTime from "../../components/common/dateTime";
 
 const Header = (props) => {
   return (
-    <div className="w-4/5 m-auto flex flex-row justify-evenly p-2 rounded-xl ">
-      <DateTime />
-      <main className="flex flex-row">
+    <div className="w-3/5 m-auto flex flex-col p-2 rounded-xl">
+      <main className="flex flex-row m-auto">
         <Link href="/">
           <a className="p-2 hover:text-gray-300 text-green-500">Home</a>
         </Link>
@@ -16,6 +15,14 @@ const Header = (props) => {
           <a className="p-2 hover:text-gray-300 text-green-500">Register</a>
         </Link>
       </main>
+      <main className="flex flex-row m-auto">
+        <Link href="/schedule/schedule">
+          <a className="p-2 hover:text-gray-300 text-green-500">Schedule</a>
+        </Link>
+      </main>
+      <div className="w-full">
+        <DateTime />
+      </div>
     </div>
   );
 };

@@ -10,7 +10,7 @@ export default function App() {
           {" "}
           <title>scheduleStuff</title>
         </Head>
-        <Home title="Welcome to scheduleStuff" />
+        <Home title="ScheduleStuff" />
       </div>
     </Layout>
   );
