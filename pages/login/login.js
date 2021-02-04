@@ -4,6 +4,7 @@ import {
   emailErrorFunc,
   passwordErrorFunc,
 } from "../../components/errorFunctions/errorFunctions";
+import PageContent from "../common/pageContent";
 
 const Login = (props) => {
   return (
@@ -12,12 +13,12 @@ const Login = (props) => {
       <Head>
         <title>Login</title>
       </Head>
-      <div className="text-center min-h-screen w-3/5 m-auto">
-        <main className="my-9 p-2 w-full m-auto rounded-xl text-green-500 bg-gray-100 justify-center">
-          <div>
-            <h2>Hey this where you can log in!</h2>
-          </div>
-        </main>
+      <PageContent
+        heading="Login"
+        subHeading="whatever who knows"
+        text="dhnwq djwqoi dwjioqd wqdj"
+      />
+      <div className="text-left w-4/5 lg:w-2/5 m-auto">
         <div className="p-2 w-full m-auto">
           <input
             type="text"

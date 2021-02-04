@@ -1,5 +1,6 @@
 import Layout from "../../components/layout/layout";
 import Head from "next/head";
+import PageContent from "../common/pageContent";
 
 const Schedule = (props) => {
   return (
@@ -8,11 +9,11 @@ const Schedule = (props) => {
       <Head>
         <title>Schedule</title>
       </Head>
-      <div className="w-3/5 m-auto text-center">
-        <div className="w-full text-left m-auto">
-          <p>will be able to view/add/delete/update from this page</p>
-        </div>
-      </div>
+      <PageContent
+        heading="Schedule goes here"
+        subHeading="Users can view, update, delete and add their schedules"
+        text="dniqwd dwqoijd qwjd dqwpojd q"
+      />
     </Layout>
   );
 };
