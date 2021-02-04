@@ -1,4 +1,3 @@
-import react, { useEffect, useState } from "react";
 import Head from "next/head";
 import Layout from "../../components/layout/layout";
 import {
@@ -6,6 +5,7 @@ import {
   passwordErrorFunc,
   fNameErrorFunc,
 } from "../../components/errorFunctions/errorFunctions";
+import PageContent from "../common/pageContent";
 
 const Register = (props) => {
   return (
@@ -14,11 +14,12 @@ const Register = (props) => {
       <Head>
         <title>Register</title>
       </Head>
-      <div className="text-center min-h-screen w-3/5 m-auto">
-        <main className="my-9 p-2 w-full m-auto rounded-xl text-green-500 bg-gray-100 justify-center">
-          <div>Register</div>
-        </main>
-
+      <PageContent
+        heading="Register"
+        subHeading="i dont know"
+        text="dnqwd dwoiqjdiowqj dwqopijdpqwjo  jwqpowd"
+      />
+      <div className="text-left w-4/5 lg:w-2/5 m-auto">
         {/* first name input */}
         <div className="p-2 w-full m-auto">
           <input
@@ -31,7 +32,6 @@ const Register = (props) => {
           />
         </div>
         <div className="text-red-400" id="fNameError"></div>
-
         {/* email input */}
         <div className="p-2 w-full m-auto">
           <input
@@ -44,7 +44,6 @@ const Register = (props) => {
           />
         </div>
         <div className="text-red-400" id="emailError"></div>
-
         {/* password input */}
         <div className="p-2 w-full m-auto">
           <input

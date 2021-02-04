@@ -5,13 +5,11 @@ import Home from "./Home/home";
 export default function App() {
   return (
     <Layout>
-      <div className="text-center min-h-screen">
-        <Head>
-          {" "}
-          <title>scheduleStuff</title>
-        </Head>
-        <Home title="ScheduleStuff" />
-      </div>
+      <Head>
+        {" "}
+        <title>scheduleStuff</title>
+      </Head>
+      <Home />
     </Layout>
   );
 }
