@@ -19,6 +19,7 @@ const Login = (props) => {
         text="dhnwq djwqoi dwjioqd wqdj"
       />
       <div className="text-left w-4/5 lg:w-2/5 m-auto">
+        {/* email input */}
         <div className="p-2 w-full m-auto">
           <input
             type="text"
@@ -30,6 +31,7 @@ const Login = (props) => {
           />
         </div>
         <div className="text-red-400" id="emailError"></div>
+        {/* password input */}
         <div className="p-2 w-full m-auto">
           <input
             type="password"
@@ -42,7 +44,10 @@ const Login = (props) => {
         </div>
         <div className="text-red-400" id="passwordError"></div>
         <div className="p-2 w-full m-auto my-2">
-          <button className="hover:text-gray-300" type="submit">
+          <button
+            className="hover:text-gray-300 text-gray-500 font-extrabold"
+            type="submit"
+          >
             Enter
           </button>
         </div>
