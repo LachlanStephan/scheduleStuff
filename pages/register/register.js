@@ -57,7 +57,11 @@ const Register = (props) => {
         </div>
         <div className="text-red-400" id="passwordError"></div>
         <div className="p-2 w-full border-green-500 m-auto my-2">
-          <button className="hover:text-gray-300" id="btn" type="submit">
+          <button
+            className="hover:text-gray-300 text-gray-500 font-extrabold"
+            id="btn"
+            type="submit"
+          >
             Enter
           </button>
         </div>
