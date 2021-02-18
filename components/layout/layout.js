@@ -6,7 +6,7 @@ export default class Layout extends Component {
     const { children } = this.props;
     return (
       <div className="layout">
-        <Header />
+        <Header link1="Home" link2="Schedule" link3="Login" link4="Register" />
         {children}
       </div>
     );
