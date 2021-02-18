@@ -1,30 +1,64 @@
 import Layout from "../../components/layout/layout";
 import Head from "next/head";
 import PageContent from "../common/pageContent";
+import React, { useState, useEffect } from "react";
+import Calendar from "react-calendar";
 
 const Schedule = (props) => {
+  // const [burbs, setBurbs] = useState([]);
+
+  // React.useEffect(function effectFunction() {
+  //   async function fetchData() {
+  //     console.log("test1");
+  //     const resp = await fetch(
+  //       "http://localhost:5000/api/schedule/schedule.json",
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Accept: "application/json",
+  //         },
+  //       }
+  //     );
+  //     console.log(resp);
+  //     console.log("test2");
+  //     const json = await resp.json();
+  //     setBurbs(json.data);
+  //   }
+  //   fetchData();
+  // }, []);
+  const [value, onChange] = useState(new Date());
+
+  fetch("http://localhost:5000/schedule")
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+
   return (
     <Layout>
       {" "}
       <Head>
         <title>Schedule</title>
       </Head>
-      <PageContent
-        heading="Schedule goes here"
-        subHeading="Users can view, update, delete and add their schedules"
-        text="dniqwd dwqoijd qwjd dqwpojd q"
-      />
+      {/* <div className="w-4/5 border-2 h-auto p-2 m-auto">
+        {this.state.text.map((row, id) => (
+          <div className="text-red" key={id}>
+            <p className="pb-2">suburb: {this.state.text.suburb}</p>
+          </div>
+        ))}
+      </div> */}
+      {/* <div className="w-4/5 border-2 h-auto p-2 m-auto">
+        <ul>
+          {burbs.map((burbs, index) => (
+            <li>{burbs.suburb}</li>
+          ))}
+        </ul> */}
+      {/* <select>{values}</select> */}
+      {/* </div> */}
+      <PageContent heading="Schedule" subHeading="" text="" />
+      <div className="w-full m-auto border-2 border-gray-300 p-6 rounded-md">
+        <Calendar onChange={onChange} value={value} />
+      </div>
       <div className="text-left w-4/5 lg:w-2/5 m-auto">
-        <div className="w-full font-extrabold p-1 flex justify-evenly">
-          <h1>M</h1>
-          <h1>T</h1>
-          <h1>W</h1>
-          <h1>T</h1>
-          <h1>F</h1>
-          <h1>S</h1>
-          <h1>S</h1>
-        </div>
-        <form className="py-9">
+        {/* <form className="py-9">
           <div className="w-full mb-8">
             <label className="font-bold p-1" htmlFor="7am">
               7am
@@ -111,7 +145,7 @@ const Schedule = (props) => {
               Submit
             </button>
           </div>
-        </form>
+        </form> */}
       </div>
     </Layout>
   );

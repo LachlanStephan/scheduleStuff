@@ -10,20 +10,15 @@ const Home = (props) => {
         text="blah blah blah"
       />
       <PageContent
-        heading="Home"
-        subHeading="Welcome to scheduleStuff"
+        heading="About the app"
+        subHeading="something about the app"
         text="blah blah blah"
       />{" "}
       <PageContent
-        heading="Home"
-        subHeading="Welcome to scheduleStuff"
+        heading="maybe more info"
+        subHeading="could be more info"
         text="blah blah blah"
       />{" "}
-      <PageContent
-        heading="Home"
-        subHeading="Welcome to scheduleStuff"
-        text="blah blah blah"
-      />
     </>
   );
 };

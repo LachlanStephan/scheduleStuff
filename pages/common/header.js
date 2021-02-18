@@ -8,17 +8,17 @@ const Header = (props) => {
         <Link href="/">
           <a className="p-2 hover:text-gray-300 foucs:text-gray-300">Home</a>
         </Link>
+        <Link href="/schedule/schedule">
+          <a className="p-2 hover:text-gray-300 foucs:text-gray-300">
+            Schedule
+          </a>
+        </Link>
         <Link href="/login/login">
           <a className="p-2 hover:text-gray-300 foucs:text-gray-300">Login</a>
         </Link>
         <Link href="/register/register">
           <a className="p-2 hover:text-gray-300 foucs:text-gray-300">
             Register
-          </a>
-        </Link>
-        <Link href="/schedule/schedule">
-          <a className="p-2 hover:text-gray-300 foucs:text-gray-300">
-            Schedule
           </a>
         </Link>
       </main>
