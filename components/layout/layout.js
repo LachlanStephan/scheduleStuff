@@ -5,7 +5,7 @@ export default class Layout extends Component {
   render() {
     const { children } = this.props;
     return (
-      <div className="layout">
+      <div className="layout w-full">
         <Header />
         {children}
       </div>

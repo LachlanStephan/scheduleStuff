@@ -1,6 +1,5 @@
 import Link from "next/link";
 import DateTime from "../../components/common/dateTime";
-import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -18,7 +17,7 @@ const Header = (props) => {
   const settingsIcon = <FontAwesomeIcon icon={faCog} />;
 
   return (
-    <div className="w-4/5 lg:w-2/5 text-left m-auto flex flex-col mt-0 mb-7 rounded-xl text-gray-500 sticky top-0 bg-white">
+    <div className="w-full ml-5 text-left m-auto flex flex-col mt-0 mb-7 rounded-xl text-gray-500 sticky top-0 bg-white">
       <main className="flex flex-row mb-2 py-4">
         <Link href="/">
           <a className="p-2 hover:text-gray-300 foucs:text-gray-300">
@@ -30,19 +29,19 @@ const Header = (props) => {
             {bookIcon}
           </a>
         </Link>
-        <Link href="/login/login">
+        <Link href="/settings/settings">
           <a className="p-2 hover:text-gray-300 foucs:text-gray-300">
+            {settingsIcon}
+          </a>
+        </Link>
+        <Link href="/login/login">
+          <a className="p-2 hover:text-gray-300 ml-28 foucs:text-gray-300">
             {loginIcon}
           </a>
         </Link>
         <Link href="/register/register">
           <a className="p-2 hover:text-gray-300 foucs:text-gray-300">
             {regIcon}
-          </a>
-        </Link>
-        <Link href="/settings/settings">
-          <a className="p-2 hover:text-gray-300 foucs:text-gray-300">
-            {settingsIcon}
           </a>
         </Link>
       </main>

@@ -5,6 +5,9 @@ const Settings = () => {
   return (
     <Layout>
       <PageContent heading="Settings" subHeading="" text="" />
+      <div className="ml-5">
+        <div className="font-bold">Probably add settings here</div>
+      </div>
     </Layout>
   );
 };

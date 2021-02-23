@@ -18,10 +18,11 @@ const Login = (props) => {
         subHeading="whatever who knows"
         text="dhnwq djwqoi dwjioqd wqdj"
       />
-      <div className="text-left w-4/5 lg:w-2/5 m-auto">
+      <div className="text-left w-full ml-5 lg:w-2/5 m-auto">
         {/* email input */}
         <div className="p-2 w-full m-auto">
           <input
+            className="border-2 border-green-200 p-2 rounded-lg"
             type="text"
             placeholder="email"
             name="email"
@@ -34,6 +35,7 @@ const Login = (props) => {
         {/* password input */}
         <div className="p-2 w-full m-auto">
           <input
+            className="border-2 border-green-200 p-2 rounded-lg"
             type="password"
             placeholder="password"
             name="password"
@@ -45,7 +47,7 @@ const Login = (props) => {
         <div className="text-red-400" id="passwordError"></div>
         <div className="p-2 w-full m-auto my-2">
           <button
-            className="hover:text-gray-300 text-gray-500 font-extrabold"
+            className="hover:text-gray-300 text-gray-500 font-extrabold underline"
             type="submit"
           >
             Enter
