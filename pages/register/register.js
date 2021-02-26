@@ -1,3 +1,4 @@
+import react, { useState, useEffect } from "react";
 import Head from "next/head";
 import Layout from "../../components/layout/layout";
 import {
@@ -8,6 +9,25 @@ import {
 import PageContent from "../common/pageContent";
 
 const Register = (props) => {
+  // form data
+  // let formData = new formData();
+  // let fName = document.getElementById("fName");
+  // let email = document.getElementById("email");
+  // let password = document.getElementById("password");
+  // formData.append(fName);
+  // formData.append(email);
+  // formData.append(password);
+
+  // useEffect(() => {
+  //   let url = "http://localhost:5000/regUser";
+  //   fetch(url, {
+  //     method: "POST",
+  //     body: FormData,
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data));
+  // });
+
   return (
     <Layout>
       {" "}

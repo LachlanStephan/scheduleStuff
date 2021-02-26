@@ -6,8 +6,8 @@ export default class Layout extends Component {
     const { children } = this.props;
     return (
       <div className="layout w-full">
-        <Header />
         {children}
+        <Header />
       </div>
     );
   }

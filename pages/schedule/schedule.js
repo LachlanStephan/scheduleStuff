@@ -9,10 +9,8 @@ const Schedule = (props) => {
 
   // const [people, setPeople] = useState([]);
 
-  // const [loading, setLoading] = useState(true);
-
   // useEffect(() => {
-  //   const fetchUrl = "http://localhost:5000/users";
+  //   let fetchUrl = "http://localhost:5000/users";
   //   fetch(fetchUrl)
   //     .then((res) => res.json())
   //     .then((people) => {
@@ -28,18 +26,28 @@ const Schedule = (props) => {
       <Head>
         <title>Schedule</title>
       </Head>
-      <PageContent heading="Schedule" subHeading="" text="" />
-      <div className="w-full m-auto ml-2 border-2 lg:w-2/5 border-green-300 rounded-md">
-        <Calendar className="p-5" onChange={onChange} value={value} />
+      <PageContent
+        heading="Schedule"
+        subHeading="hi there user!"
+        text="Check out your day below"
+      />
+      <div className="w-screen m-auto text-center lg:w-2/5 rounded-md">
+        <Calendar className="p-5 w-screen" onChange={onChange} value={value} />
       </div>
-      {/* <div className="text-left w-4/5 lg:w-2/5 m-auto">
-        {people.map((users, index) => (
-          <div className="font-bold pt-2" key={index}>
-            <p>{users.fName}</p>
-            <p>{users.lName}</p>
-          </div>
-        ))}
-      </div> */}
+      {/* {people.length > 0 ? (
+        <div className="text-left w-4/5 lg:w-2/5 m-auto">
+          {people.map((users, index) => (
+            <div className="font-bold pt-2" key={index}>
+              <p>{users.fName}</p>
+              <p>{users.lName}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="text-left w-4/5 lg:w-2/5 m-auto font-bold">
+          Loading...
+        </div>
+      )} */}
     </Layout>
   );
 };
