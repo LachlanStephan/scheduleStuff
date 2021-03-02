@@ -17,8 +17,8 @@ const Header = (props) => {
   const settingsIcon = <FontAwesomeIcon icon={faCog} />;
 
   return (
-    <div className="fixed w-full ml-5 text-left m-auto flex flex-col pt-4 mb-0 rounded-xl text-gray-500 bottom-0 bg-white">
-      <main className="flex flex-row mb-2 py-4">
+    <div className="sticky w-full text-left m-auto flex flex-col pt-2 rounded-xl text-gray-500 bottom-0 bg-white">
+      <main className="flex ml-1 flex-row mb-2 py-4">
         <Link href="/">
           <a className="p-2 hover:text-gray-300 foucs:text-gray-300">
             {homeIcon}
@@ -45,7 +45,7 @@ const Header = (props) => {
           </a>
         </Link>
       </main>
-      <main className="flex flex-row mb-2 py-1">
+      <main className="flex flex-row ml-1 mb-2 py-1">
         <DateTime />
       </main>
     </div>

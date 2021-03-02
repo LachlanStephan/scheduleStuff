@@ -3,22 +3,23 @@ import Head from "next/head";
 import PageContent from "../common/pageContent";
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
+import Link from "next/link";
 
 const Schedule = (props) => {
   const [value, onChange] = useState(new Date());
 
-  // const [people, setPeople] = useState([]);
+  const [schedule, setSchedule] = useState([]);
 
-  // useEffect(() => {
-  //   let fetchUrl = "http://localhost:5000/users";
-  //   fetch(fetchUrl)
-  //     .then((res) => res.json())
-  //     .then((people) => {
-  //       console.log(people);
-  //       setPeople(people);
-  //     });
-  //   console.log("check");
-  // }, []);
+  useEffect(() => {
+    let fetchUrl = "http://localhost:5000/schedule";
+    fetch(fetchUrl)
+      .then((res) => res.json())
+      .then((schedule) => {
+        setSchedule(schedule);
+        console.log(schedule);
+      });
+    console.log("check");
+  }, []);
 
   return (
     <Layout>
@@ -33,13 +34,24 @@ const Schedule = (props) => {
       />
       <div className="w-screen m-auto text-center lg:w-2/5 rounded-md">
         <Calendar className="p-5 w-screen" onChange={onChange} value={value} />
+        <button>
+          <Link href="/schedule/addSchedule/addSchedule">Add event</Link>
+        </button>
       </div>
-      {/* {people.length > 0 ? (
+      {schedule.length > 0 ? (
         <div className="text-left w-4/5 lg:w-2/5 m-auto">
-          {people.map((users, index) => (
-            <div className="font-bold pt-2" key={index}>
-              <p>{users.fName}</p>
-              <p>{users.lName}</p>
+          {schedule.map((schedule, index) => (
+            <div className="pt-2" key={index}>
+              <div className="py-2">
+                <h5 className="font-bold">Event</h5>
+                <p>
+                  {schedule.startTime}-{schedule.eventName}
+                </p>
+              </div>
+              <div className="py-4">
+                <h5 className="font-bold">description</h5>
+                <p>{schedule.eventDescription}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -47,7 +59,7 @@ const Schedule = (props) => {
         <div className="text-left w-4/5 lg:w-2/5 m-auto font-bold">
           Loading...
         </div>
-      )} */}
+      )}
     </Layout>
   );
 };
