@@ -5,9 +5,9 @@ export default class Layout extends Component {
   render() {
     const { children } = this.props;
     return (
-      <div className="layout">
-        <Header link1="Home" link2="Schedule" link3="Login" link4="Register" />
+      <div className="layout w-full">
         {children}
+        <Header />
       </div>
     );
   }

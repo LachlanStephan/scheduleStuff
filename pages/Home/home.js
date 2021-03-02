@@ -8,17 +8,18 @@ const Home = (props) => {
         heading="Home"
         subHeading="Welcome to scheduleStuff"
         text="blah blah blah"
+      />{" "}
+      <PageContent
+        heading="Info"
+        subHeading="info to scheduleStuff"
+        text="blah blah blah"
+      />{" "}
+      <PageContent
+        heading="oqwdnio"
+        subHeading="Welcome to scheduleStuff"
+        text="blah blah blah"
       />
-      <PageContent
-        heading="About the app"
-        subHeading="something about the app"
-        text="blah blah blah"
-      />{" "}
-      <PageContent
-        heading="maybe more info"
-        subHeading="could be more info"
-        text="blah blah blah"
-      />{" "}
+      <PageContent subHeading="something about the app" text="blah blah blah" />{" "}
     </>
   );
 };
