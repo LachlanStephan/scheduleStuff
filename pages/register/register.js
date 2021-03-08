@@ -17,8 +17,11 @@ const Register = (props) => {
     console.log(data);
     let url = "http://localhost:5000/regUser";
     fetch(url, {
-      method: "post",
-      body: data,
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
   };
 
@@ -32,7 +35,7 @@ const Register = (props) => {
       <div class="bg-white lg:w-4/12 md:6/12 w-10/12 m-auto my-10 shadow-md">
         <div class="py-8 px-8 rounded-xl">
           <h1 class="font-medium text-2xl mt-3 text-center">Register</h1>
-          <form method="post" onSubmit={handleSubmit(onSubmit)} class="mt-6">
+          <form onSubmit={handleSubmit(onSubmit)} class="mt-6">
             <div class="my-5 text-sm">
               <label for="firstName" class="block text-black">
                 First name
@@ -43,7 +46,7 @@ const Register = (props) => {
                 id="fName"
                 name="fName"
                 type="text"
-                // pattern="([a-zA-Z]{3,30}\s*)+"
+                pattern="([a-zA-Z]{3,30}\s*)+"
                 ref={register({ required: true })}
                 onBlur={fNameErrorFunc}
                 class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
