@@ -1,5 +1,6 @@
 import Layout from "../../../components/layout/layout";
 import Head from "next/head";
+import PageContent from "../../common/pageContent";
 
 const AddSchedule = (props) => {
   return (
@@ -8,11 +9,15 @@ const AddSchedule = (props) => {
       <Head>
         <title>Add Schedule</title>
       </Head>
-      <div class="min-h-screen bg-white py-6 flex flex-col justify-center">
-        <div class="relative py-3 sm:max-w-xl sm:mx-auto">
-          <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
+      <PageContent
+        heading="Add event"
+        text="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+      />
+      <div class="bg-white flex flex-col justify-center">
+        <div class="relative sm:max-w-xl sm:mx-auto">
+          <div class="relative px-4 pb-4 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
             <div class="max-w-md mx-auto">
-              <div class="flex items-center space-x-5">
+              {/* <div class="flex items-center space-x-5">
                 <div class="h-14 w-14 bg-yellow-200 rounded-full flex flex-shrink-0 justify-center items-center text-yellow-500 text-2xl font-mono">
                   i
                 </div>
@@ -22,7 +27,7 @@ const AddSchedule = (props) => {
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   </p>
                 </div>
-              </div>
+              </div> */}
               <div class="divide-y divide-gray-200">
                 <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                   <div class="flex flex-col">

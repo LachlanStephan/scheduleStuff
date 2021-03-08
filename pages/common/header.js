@@ -18,7 +18,7 @@ const Header = (props) => {
 
   return (
     <div className="sticky w-full text-left m-auto flex flex-col pt-2 rounded-xl text-gray-500 bottom-0 bg-white">
-      <main className="flex ml-1 flex-row mb-2 py-4">
+      <main className="flex ml-1 flex-row mb-2 py-4 justify-evenly">
         <Link href="/">
           <a className="p-2 hover:text-gray-300 foucs:text-gray-300">
             {homeIcon}
@@ -35,7 +35,7 @@ const Header = (props) => {
           </a>
         </Link>
         <Link href="/login/login">
-          <a className="p-2 hover:text-gray-300 ml-32 foucs:text-gray-300">
+          <a className="p-2 hover:text-gray-300 foucs:text-gray-300">
             {loginIcon}
           </a>
         </Link>
