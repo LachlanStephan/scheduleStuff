@@ -57,7 +57,7 @@ const Schedule = (props) => {
         </div>
       ) : (
         <div className="text-left w-4/5 lg:w-2/5 m-auto font-bold">
-          Loading...
+          Looks like you have nothing on today
         </div>
       )}
     </Layout>

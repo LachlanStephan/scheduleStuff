@@ -9,11 +9,14 @@ import {
 } from "../../components/errorFunctions/errorFunctions";
 import PageContent from "../common/pageContent";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 const Register = (props) => {
   const { register, handleSubmit } = useForm();
+  const router = useRouter();
 
   const onSubmit = (data) => {
+    router.push("/home/home");
     console.log(data);
     let url = "http://localhost:5000/regUser";
     fetch(url, {
@@ -22,11 +25,20 @@ const Register = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    })
+      .then((res) => res)
+      .then((data) => console.log(data.headers))
+      .then((data) => {
+        if (!data.ok) {
+          router.push("/register/register");
+        } else {
+          router.push("home/home");
+        }
+      });
   };
 
   return (
-    <Layout>
+    <>
       {" "}
       <Head>
         <title>Register</title>
@@ -111,50 +123,8 @@ const Register = (props) => {
           </form>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 
 export default Register;
-// const [data, setData] = useState({
-//   fName: "",
-//   lName: "",
-//   email: "",
-//   password: "",
-// });
-
-// const value = e.target.value;
-
-// const handlefName = (e) => {};
-
-// const handlelName = (e) => {
-//   setData({ lName: e.target.value });
-// };
-// const handleEmail = (e) => {
-//   setData({
-//     ...data,
-//     [e.target.email]: value,
-//   });
-// };
-
-// const handlePassword = (e) => {
-//   setData({
-//     ...data,
-//     [e.target.password]: value,
-//   });
-// };
-
-// const handleSubmit = (event) => {
-//   let formData = new FormData(form.current);
-//   formData.set("fName", formData.get("fName"));
-//   formData.set("lName", formData.get("lName"));
-//   formData.set("email", formData.get("email"));
-//   formData.set("password", formData.get("password"));
-//   let url = "http://localhost:5000/regUser";
-//   fetch(url, {
-//     method: "POST",
-//     body: JSON.stringify({
-//       formData,
-//     }),
-//   });
-// };

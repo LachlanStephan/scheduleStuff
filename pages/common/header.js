@@ -19,7 +19,7 @@ const Header = (props) => {
   return (
     <div className="sticky w-full text-left m-auto flex flex-col pt-2 rounded-xl text-gray-500 bottom-0 bg-white">
       <main className="flex ml-1 flex-row mb-2 py-4 justify-evenly">
-        <Link href="/">
+        <Link href="/home/home">
           <a className="p-2 hover:text-gray-300 foucs:text-gray-300">
             {homeIcon}
           </a>
@@ -34,7 +34,7 @@ const Header = (props) => {
             {settingsIcon}
           </a>
         </Link>
-        <Link href="/login/login">
+        {/* <Link href="/login/login">
           <a className="p-2 hover:text-gray-300 foucs:text-gray-300">
             {loginIcon}
           </a>
@@ -43,7 +43,7 @@ const Header = (props) => {
           <a className="p-2 hover:text-gray-300 foucs:text-gray-300">
             {regIcon}
           </a>
-        </Link>
+        </Link> */}
       </main>
       <main className="flex flex-row ml-1 mb-2 py-1">
         <DateTime />

@@ -1,9 +1,11 @@
 import { useState } from "react";
+import Layout from "../../components/layout/layout";
 import PageContent from "../common/pageContent";
 
 const Home = (props) => {
   return (
-    <>
+    <Layout>
+      <title>Home</title>
       <PageContent
         heading="Home"
         subHeading="Welcome to scheduleStuff"
@@ -20,7 +22,7 @@ const Home = (props) => {
         text="blah blah blah"
       />
       <PageContent subHeading="something about the app" text="blah blah blah" />{" "}
-    </>
+    </Layout>
   );
 };
 
