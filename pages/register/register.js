@@ -15,8 +15,9 @@ const Register = (props) => {
   const { register, handleSubmit } = useForm();
   const router = useRouter();
 
+  const [emailExists, setEmailExists] = useState("");
+
   const onSubmit = (data) => {
-    router.push("/home/home");
     console.log(data);
     let url = "http://localhost:5000/regUser";
     fetch(url, {
@@ -27,12 +28,18 @@ const Register = (props) => {
       },
     })
       .then((res) => res)
-      .then((data) => console.log(data.headers))
+      // .then((data) => console.log(data.headers))
       .then((data) => {
-        if (!data.ok) {
+        console.log(data.status);
+        if (data.status === 403) {
           router.push("/register/register");
+          console.log("Email exists");
+          setEmailExists("email is already registered to an account");
+        }
+        if (data.status === 201) {
+          router.push("../home/home");
         } else {
-          router.push("home/home");
+          console.log("something went wrong");
         }
       });
   };
@@ -99,6 +106,7 @@ const Register = (props) => {
                 placeholder="Email"
               />
             </div>
+            <div className="text-red-300">{emailExists}</div>
             <p className="text-red-300" id="emailError"></p>
             <div class="my-5 text-sm">
               <label for="password" class="block text-black">
