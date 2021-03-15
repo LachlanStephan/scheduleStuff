@@ -8,10 +8,16 @@ import PageContent from "../common/pageContent";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const Login = (props) => {
   const { register, handleSubmit } = useForm();
+
   const router = useRouter();
+
+  // To display message that the acc doesn't exist
+  const [noLogin, setnoLogin] = useState("");
+
   const onSubmit = (data) => {
     console.log(data);
     let url = "http://localhost:5000/login";
@@ -21,17 +27,23 @@ const Login = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((res) => {
-      if (res.status === 201) {
-        router.push("/home/home");
-      }
-      if (res.status === 401) {
-        router.push("/login/login");
-        return "Email in use";
-      } else {
-        return "try again later";
-      }
-    });
+      credentials: "include",
+    })
+      .then((res) => res)
+      .then((data) => {
+        console.log(data.status, data.headers);
+        if (data.status === 401) {
+          router.push("/login/login");
+          setnoLogin(
+            "This account does not exist, try again or click the link below to register"
+          );
+        }
+        if (data.status === 200) {
+          router.push("../home/home");
+        } else {
+          console.log("something went wrong");
+        }
+      });
   };
 
   return (
@@ -61,6 +73,7 @@ const Login = (props) => {
                 placeholder="Username"
               />
             </div>
+            <div className="text-red-300">{noLogin}</div>
             <p className="text-red-300" id="emailError"></p>
             <div class="my-5 text-sm">
               <label for="password" class="block text-black">

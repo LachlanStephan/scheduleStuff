@@ -13,8 +13,10 @@ import { useRouter } from "next/router";
 
 const Register = (props) => {
   const { register, handleSubmit } = useForm();
+
   const router = useRouter();
 
+  // To display message that email already in use
   const [emailExists, setEmailExists] = useState("");
 
   const onSubmit = (data) => {
@@ -26,12 +28,12 @@ const Register = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
     })
       .then((res) => res)
-      // .then((data) => console.log(data.headers))
       .then((data) => {
         console.log(data.status);
-        if (data.status === 403) {
+        if (data.status === 409) {
           router.push("/register/register");
           console.log("Email exists");
           setEmailExists("email is already registered to an account");

@@ -4,17 +4,24 @@ import PageContent from "../common/pageContent";
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import Link from "next/link";
+import "react-calendar/dist/Calendar.css";
 
 const Schedule = (props) => {
+  // For react-calendar
   const [value, onChange] = useState(new Date());
 
+  // For the fetch call
   const [schedule, setSchedule] = useState([]);
 
+  // Fetch the schedule data per user
   useEffect(() => {
     let fetchUrl = "http://localhost:5000/schedule";
-    fetch(fetchUrl)
+    fetch(fetchUrl, {
+      credentials: "include",
+    })
       .then((res) => res.json())
       .then((schedule) => {
+        // Set the results to the schedule var
         setSchedule(schedule);
         console.log(schedule);
       });
@@ -32,8 +39,12 @@ const Schedule = (props) => {
         subHeading="hi there user!"
         text="Check out your day below"
       />
-      <div className="w-screen m-auto text-center lg:w-2/5 rounded-md">
-        <Calendar className="p-5 w-screen" onChange={onChange} value={value} />
+      <div className="w-4/5 m-auto text-center lg:w-2/5">
+        <Calendar
+          className="w-full rounded-md"
+          onChange={onChange}
+          value={value}
+        />
         <button>
           <Link href="/schedule/addSchedule/addSchedule">Add event</Link>
         </button>
