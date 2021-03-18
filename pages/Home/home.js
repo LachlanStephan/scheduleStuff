@@ -3,25 +3,17 @@ import Layout from "../../components/layout/layout";
 import PageContent from "../common/pageContent";
 
 const Home = (props) => {
+  // Add fetch to show user their next event
+
   return (
     <Layout>
       <title>Home</title>
       <PageContent
         heading="Home"
         subHeading="Welcome to scheduleStuff"
-        text="blah blah blah"
-      />{" "}
-      <PageContent
-        heading="Info"
-        subHeading="info to scheduleStuff"
-        text="blah blah blah"
-      />{" "}
-      <PageContent
-        heading="oqwdnio"
-        subHeading="Welcome to scheduleStuff"
-        text="blah blah blah"
+        text="Hello user, your next event is"
       />
-      <PageContent subHeading="something about the app" text="blah blah blah" />{" "}
+      <div className="min-h-screen"></div>
     </Layout>
   );
 };

@@ -53,30 +53,30 @@ const Login = (props) => {
         <title>Login</title>
       </Head>
       <PageContent heading="ScheduleStuff" subHeading="" text="" />
-      <div class="bg-white lg:w-4/12 md:6/12 w-10/12 m-auto my-10 shadow-md">
-        <div class="py-8 px-8 rounded-xl">
-          <h1 class="font-medium text-2xl mt-3 text-center">Login</h1>
-          <form onSubmit={handleSubmit(onSubmit)} class="mt-6">
-            <div class="my-5 text-sm">
-              <label for="username" class="block text-black">
+      <div className="bg-white lg:w-4/12 md:6/12 w-10/12 m-auto my-10 shadow-md">
+        <div className="py-8 px-8 rounded-xl">
+          <h1 className="font-medium text-2xl mt-3 text-center">Login</h1>
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
+            <div className="my-5 text-sm">
+              <label htmlFor="username" className="block text-black">
                 email
               </label>
               <input
                 type="text"
-                autofocus
+                autoFocus
                 name="email"
                 id="email"
                 pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
                 ref={register({ required: true })}
                 onBlur={emailErrorFunc}
-                class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
+                className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
                 placeholder="Username"
               />
             </div>
             <div className="text-red-300">{noLogin}</div>
             <p className="text-red-300" id="emailError"></p>
-            <div class="my-5 text-sm">
-              <label for="password" class="block text-black">
+            <div className="my-5 text-sm">
+              <label htmlFor="password" className="block text-black">
                 Password
               </label>
               <input
@@ -86,11 +86,11 @@ const Login = (props) => {
                 pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
                 ref={register({ required: true })}
                 onBlur={passwordErrorFunc}
-                class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
+                className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
                 placeholder="Password"
               />
               <p className="text-red-300 pb-2" id="passwordError"></p>
-              <div class="flex justify-end mt-2 text-xs text-gray-600">
+              <div className="flex justify-end mt-2 text-xs text-gray-600">
                 <Link href="/register/register">
                   <a href="../../pages/auth/forget_password.html hover:text-black">
                     Don't have an account? Register here
@@ -99,7 +99,7 @@ const Login = (props) => {
               </div>
             </div>
 
-            <button class="block text-center text-white bg-gray-800 p-3 duration-300 rounded-sm hover:bg-black w-full">
+            <button className="block text-center text-white bg-gray-800 p-3 duration-300 rounded-sm hover:bg-black w-full">
               Login
             </button>
           </form>
