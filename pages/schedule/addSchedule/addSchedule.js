@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 const AddSchedule = (props) => {
-  const { register, handleSubmit } = useForm();
+  const { register, errors, handleSubmit } = useForm();
   const router = useRouter();
   const [addEventErrMsg, setaddEventErrMsg] = useState("");
 
@@ -62,6 +62,7 @@ const AddSchedule = (props) => {
                       className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                       placeholder="Event title"
                     />
+                    {errors.eventTitle && "Event title is required"}
                   </div>
                   <div className="flex items-center space-x-4">
                     <div className="flex flex-col">
@@ -74,6 +75,7 @@ const AddSchedule = (props) => {
                           className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                           placeholder="25/02/2020"
                         />
+                        {errors.startTime && "Start time is required"}
                         <div className="absolute left-3 top-2">
                           <svg
                             className="w-6 h-6"
@@ -103,6 +105,7 @@ const AddSchedule = (props) => {
                           className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                           placeholder="26/02/2020"
                         />
+                        {errors.endTime && "End time is required"}
                         <div className="absolute left-3 top-2">
                           <svg
                             className="w-6 h-6"
@@ -133,6 +136,7 @@ const AddSchedule = (props) => {
                           className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                           placeholder="25/02/2020"
                         />
+                        {errors.startDate && "Start date is required"}
                         <div className="absolute left-3 top-2">
                           <svg
                             className="w-6 h-6"
@@ -162,6 +166,7 @@ const AddSchedule = (props) => {
                           className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                           placeholder="26/02/2020"
                         />
+                        {errors.endDate && "End date is requred"}
                         <div className="absolute left-3 top-2">
                           <svg
                             className="w-6 h-6"
@@ -190,6 +195,7 @@ const AddSchedule = (props) => {
                       className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                       placeholder="Optional"
                     />
+                    {errors.eventDesc && "Event description is required"}
                   </div>
                 </div>
                 <div className="pt-4 flex items-center space-x-4">

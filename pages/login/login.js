@@ -1,9 +1,5 @@
 import Head from "next/head";
 import Layout from "../../components/layout/layout";
-import {
-  emailErrorFunc,
-  passwordErrorFunc,
-} from "../../components/errorFunctions/errorFunctions";
 import PageContent from "../common/pageContent";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -11,7 +7,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 const Login = (props) => {
-  const { register, handleSubmit } = useForm();
+  const { register, errors, handleSubmit } = useForm();
 
   const router = useRouter();
 
@@ -68,10 +64,12 @@ const Login = (props) => {
                 id="email"
                 pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
                 ref={register({ required: true })}
-                onBlur={emailErrorFunc}
                 className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
                 placeholder="Username"
               />
+              <div className="text-red-300">
+                {errors.email && "Email is required"}
+              </div>
             </div>
             <div className="text-red-300">{noLogin}</div>
             <p className="text-red-300" id="emailError"></p>
@@ -85,10 +83,12 @@ const Login = (props) => {
                 id="password"
                 pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
                 ref={register({ required: true })}
-                onBlur={passwordErrorFunc}
                 className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
                 placeholder="Password"
               />
+              <div className="text-red-300">
+                {errors.password && "Password is required"}
+              </div>
               <p className="text-red-300 pb-2" id="passwordError"></p>
               <div className="flex justify-end mt-2 text-xs text-gray-600">
                 <Link href="/register/register">

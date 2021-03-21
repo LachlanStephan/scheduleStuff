@@ -6,6 +6,10 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useRouter } from "next/router";
 
+/////////////////////
+// ADD react-moment for formatting date - npm i react-moment
+/////////////////////
+
 const Schedule = (props) => {
   // Next router
   const router = useRouter();

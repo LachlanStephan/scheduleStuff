@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBrush, faMoon, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Settings = () => {
   const darkmodeIcon = <FontAwesomeIcon icon={faMoon} />;
@@ -12,10 +12,9 @@ const Settings = () => {
   const updateNameIcon = <FontAwesomeIcon icon={faUserAlt} />;
 
   const router = useRouter();
-
   const { register, handleSubmit } = useForm();
-
   const [updateName, setUpdateName] = useState("");
+  const [logoutFail, setLogoutFail] = useState("");
 
   const onSubmit = (data) => {
     let url = "http://localhost:5000/updateName";
@@ -40,6 +39,26 @@ const Settings = () => {
         }
       });
   };
+
+  const logout = () => {
+    let url = "http://localhost:5000/logout";
+    fetch(url, {
+      method: "POST",
+      credentials: "include",
+    })
+      .then((res) => res)
+      .then((data) => {
+        console.log(data.status);
+        if (data.status === 200) {
+          router.push("/login/login");
+        }
+        if (data.status === 400) {
+          router.push("/settings/settings");
+          setLogoutFail("We couldn't log you out, try again later");
+        }
+      });
+  };
+
   return (
     <Layout>
       <PageContent
@@ -90,6 +109,16 @@ const Settings = () => {
           </button>
           <hr className="pb-2"></hr>
         </div>
+        <div className="pl-5 pb-1">
+          <button
+            onClick={logout}
+            className="border-2 rounded-xl p-1 bg-indigo-100"
+          >
+            Logout
+          </button>
+          <div className="text-red-300">{logoutFail}</div>
+        </div>
+        <hr className="pb-2"></hr>
       </div>
     </Layout>
   );
