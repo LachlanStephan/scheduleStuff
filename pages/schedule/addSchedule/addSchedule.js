@@ -73,7 +73,7 @@ const AddSchedule = (props) => {
                           type="text"
                           ref={register({ required: true })}
                           className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                          placeholder="25/02/2020"
+                          placeholder="09:00:00"
                         />
                         {errors.startTime && "Start time is required"}
                         <div className="absolute left-3 top-2">
@@ -103,7 +103,7 @@ const AddSchedule = (props) => {
                           type="text"
                           ref={register({ required: true })}
                           className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                          placeholder="26/02/2020"
+                          placeholder="14:00:00"
                         />
                         {errors.endTime && "End time is required"}
                         <div className="absolute left-3 top-2">
@@ -134,7 +134,7 @@ const AddSchedule = (props) => {
                           type="text"
                           ref={register({ required: true })}
                           className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                          placeholder="25/02/2020"
+                          placeholder="2021-03-15"
                         />
                         {errors.startDate && "Start date is required"}
                         <div className="absolute left-3 top-2">
@@ -164,7 +164,7 @@ const AddSchedule = (props) => {
                           type="text"
                           ref={register({ required: true })}
                           className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                          placeholder="26/02/2020"
+                          placeholder="2020-03-15"
                         />
                         {errors.endDate && "End date is requred"}
                         <div className="absolute left-3 top-2">

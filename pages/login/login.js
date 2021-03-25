@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Layout from "../../components/layout/layout";
 import PageContent from "../common/pageContent";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -62,7 +61,7 @@ const Login = (props) => {
                 autoFocus
                 name="email"
                 id="email"
-                pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                // pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
                 ref={register({ required: true })}
                 className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
                 placeholder="Username"

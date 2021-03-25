@@ -44,7 +44,7 @@ const Register = (props) => {
           setEmailExists("email is already registered to an account");
         }
         if (data.status === 201) {
-          router.push("../home/home");
+          router.push("../login/login");
         } else {
           console.log("something went wrong");
         }

@@ -1,17 +1,16 @@
-import { useState } from "react";
 import Layout from "../../components/layout/layout";
 import PageContent from "../common/pageContent";
+import getUSerName from "../common/getUserName";
+import getUserEvent from "../common/getNextEvent";
 
 const Home = (props) => {
-  // Add fetch to show user their next event
-
   return (
     <Layout>
       <title>Home</title>
       <PageContent
-        heading="Home"
-        subHeading="Welcome to scheduleStuff"
-        text="Hello user, your next event is"
+        heading="Schedule stuff"
+        subHeading={`Hello  ${getUSerName()}`}
+        text={`Your next event is ${getUserEvent()}`}
       />
       <div className="min-h-screen"></div>
     </Layout>

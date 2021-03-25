@@ -6,23 +6,19 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useRouter } from "next/router";
 
-/////////////////////
-// ADD react-moment for formatting date - npm i react-moment
-/////////////////////
-
 const Schedule = (props) => {
   // Next router
   const router = useRouter();
 
-  // For react-calendar
-  const [value, onChange] = useState(new Date());
-
   // For the fetch call
   const [schedule, setSchedule] = useState([]);
 
-  // Fetch the schedule data per user
+  // Set the fetch to current date
+  const [curDate, setCurDate] = useState(new Date());
+
+  // Fetch the schedule data per user for the selected date ---> Date not working yet ****fix****
   useEffect(() => {
-    let url = "http://localhost:5000/schedule";
+    let url = "http://localhost:5000/schedule/" + curDate;
     fetch(url, {
       method: "GET",
       headers: {
@@ -32,6 +28,7 @@ const Schedule = (props) => {
     }).then((res) => {
       switch (res.status) {
         case 400:
+          router.push("/schedule/schedule");
           console.log("somethig went wrong");
           break;
         case 401:
@@ -39,6 +36,7 @@ const Schedule = (props) => {
           break;
         case 204:
           console.log("no content");
+          setSchedule([]);
           break;
         case 200:
           res.json().then((data) => {
@@ -46,7 +44,7 @@ const Schedule = (props) => {
           });
       }
     });
-  }, []);
+  }, [curDate]);
 
   return (
     <Layout>
@@ -61,8 +59,8 @@ const Schedule = (props) => {
       />
       <Calendar
         className="w-full border-solid m-auto"
-        onChange={onChange}
-        value={value}
+        onChange={setCurDate}
+        value={curDate}
       />
       {schedule.length > 0 ? (
         <div className="text-left w-full lg:w-2/5 m-auto">
@@ -80,9 +78,9 @@ const Schedule = (props) => {
                   <table key={index} className="w-full">
                     <tbody className="">
                       <tr className="relative transform scale-100 text-xs py-1 border-b-2 border-blue-100 cursor-default">
-                        <td className="pl-5 pr-3 whitespace-no-wrap">
+                        <td className="pl-5 pr-3 whitespace-no-wrap w-1/2">
                           <div className="text-gray-600">
-                            {schedule.startDate}
+                            {new Date(schedule.startDate).toDateString()}
                           </div>
                           <div>
                             <p>{schedule.startTime}</p>
@@ -90,7 +88,7 @@ const Schedule = (props) => {
                           </div>
                         </td>
 
-                        <td className="px-2 py-2 whitespace-no-wrap">
+                        <td className="px-2 py-2 whitespace-no-wrap w-1/2">
                           <div className="leading-5 text-gray-500 font-bold text-lg">
                             {schedule.eventName}
                           </div>
@@ -107,7 +105,7 @@ const Schedule = (props) => {
           </div>
         </div>
       ) : (
-        <div className="text-left w-4/5 lg:w-2/5 m-auto font-bold">
+        <div className="text-left w-4/5 lg:w-2/5 m-auto font-bold py-4">
           Looks like you have nothing on today
         </div>
       )}
