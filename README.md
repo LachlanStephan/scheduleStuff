@@ -12,14 +12,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Connect the server
 
+Check this repo for instructions on how to set up the server/db
+
 - visit https://github.com/LachlanStephan/scheduleStuffBackend
-
-Check this repo for DB instructions
-
-- git clone repo
-- npm i
-- node server.js
-- The default port is localhost:8000
 
 ## Learn More
 
