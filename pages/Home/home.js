@@ -1,26 +1,19 @@
-import { useState } from "react";
+import Layout from "../../components/layout/layout";
 import PageContent from "../common/pageContent";
+import getUSerName from "../common/getUserName";
+import getUserEvent from "../common/getNextEvent";
 
 const Home = (props) => {
   return (
-    <>
+    <Layout>
+      <title>Home</title>
       <PageContent
-        heading="Home"
-        subHeading="Welcome to scheduleStuff"
-        text="blah blah blah"
-      />{" "}
-      <PageContent
-        heading="Info"
-        subHeading="info to scheduleStuff"
-        text="blah blah blah"
-      />{" "}
-      <PageContent
-        heading="oqwdnio"
-        subHeading="Welcome to scheduleStuff"
-        text="blah blah blah"
+        heading="Schedule stuff"
+        subHeading={`Hello  ${getUSerName()}`}
+        text={`Your next event is ${getUserEvent()}`}
       />
-      <PageContent subHeading="something about the app" text="blah blah blah" />{" "}
-    </>
+      <div className="min-h-screen"></div>
+    </Layout>
   );
 };
 
