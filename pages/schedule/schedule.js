@@ -5,6 +5,12 @@ import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useRouter } from "next/router";
+import {
+  SwipeableListItem,
+  SwipeAction,
+  TrailingActions,
+} from "react-swipeable-list";
+import "react-swipeable-list/dist/styles.css";
 
 const Schedule = (props) => {
   // Next router
@@ -16,7 +22,6 @@ const Schedule = (props) => {
   // Set the fetch to current date
   const [curDate, setCurDate] = useState(new Date());
 
-  // Fetch the schedule data per user for the selected date ---> Date not working yet ****fix****
   useEffect(() => {
     let url = "http://localhost:5000/schedule/" + curDate;
     fetch(url, {
@@ -46,6 +51,28 @@ const Schedule = (props) => {
     });
   }, [curDate]);
 
+  const deleteEvent = (event_ID) => {
+    let url = "http://localhost:5000/deleteEvent";
+    fetch(url, {
+      credentials: "include",
+      method: "POST",
+      body: JSON.stringify({ event_ID }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  };
+
+  const trailingActions = (event_ID) => (
+    <TrailingActions>
+      <SwipeAction destructive={true} onClick={() => deleteEvent(event_ID)}>
+        <div className="bg-red-300 flex justify-center">
+          <button className="m-auto">Delete</button>
+        </div>
+      </SwipeAction>
+    </TrailingActions>
+  );
+
   return (
     <Layout>
       {" "}
@@ -69,36 +96,39 @@ const Schedule = (props) => {
               <div className="bg-white text-sm text-gray-500 font-bold px-5 py-2 shadow border-b border-gray-300">
                 My day
               </div>
-
               <div
                 className="w-full h-full overflow-auto shadow bg-white"
                 id="journal-scroll"
               >
                 {schedule.map((schedule, index) => (
-                  <table key={index} className="w-full">
-                    <tbody className="">
-                      <tr className="relative transform scale-100 text-xs py-1 border-b-2 border-blue-100 cursor-default">
-                        <td className="pl-5 pr-3 whitespace-no-wrap w-1/2">
-                          <div className="text-gray-600">
-                            {new Date(schedule.startDate).toDateString()}
-                          </div>
-                          <div>
-                            <p>{schedule.startTime}</p>
-                            <p>{schedule.endTime}</p>
-                          </div>
-                        </td>
+                  <SwipeableListItem
+                    fullSwipe={true}
+                    threshold={0.6}
+                    trailingActions={trailingActions(schedule.event_ID)}
+                    key={schedule.event_ID}
+                    className="w-full relative transform scale-100 text-xs py-1 border-b-2 border-blue-100 cursor-default"
+                  >
+                    <td className="pl-5 pr-3 whitespace-no-wrap w-1/2">
+                      <div className="text-gray-600">
+                        {new Date(schedule.startDate).toDateString()}
+                      </div>
+                      <div>
+                        <p>{schedule.event_ID}</p>
+                        <p>{schedule.startTime}</p>
+                        <p>{schedule.endTime}</p>
+                      </div>
+                      <hr className="p-1"></hr>
+                    </td>
 
-                        <td className="px-2 py-2 whitespace-no-wrap w-1/2">
-                          <div className="leading-5 text-gray-500 font-bold text-lg">
-                            {schedule.eventName}
-                          </div>
-                          <div className="leading-5 text-gray-900 text-md">
-                            {schedule.eventDescription}
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                    <td className="px-2 py-2 whitespace-no-wrap w-1/2">
+                      <div className="leading-5 text-gray-500 font-bold text-lg">
+                        {schedule.eventName}
+                      </div>
+                      <div className="leading-5 text-gray-900 text-md">
+                        {schedule.eventDescription}
+                      </div>
+                    </td>
+                  </SwipeableListItem>
                 ))}
               </div>
             </div>

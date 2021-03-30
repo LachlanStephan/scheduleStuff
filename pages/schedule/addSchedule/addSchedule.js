@@ -39,15 +39,12 @@ const AddSchedule = (props) => {
       <Head>
         <title>Add Schedule</title>
       </Head>
-      <PageContent
-        heading="Add event"
-        text="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
-      />
+      <PageContent heading="Add event" />
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white flex flex-col justify-center w-full"
       >
-        <div className="relative sm:max-w-xl sm:mx-auto">
+        <div className="relative sm:max-w-xl sm:mx-auto min-h-screen">
           <div className="text-red-300">{addEventErrMsg}</div>
           <div className="relative px-4 pb-4 bg-white md:mx-0 shadow sm:p-10 w-full">
             <div className="max-w-md mx-auto">

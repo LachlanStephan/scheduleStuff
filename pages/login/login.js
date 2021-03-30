@@ -80,7 +80,7 @@ const Login = (props) => {
                 type="password"
                 name="password"
                 id="password"
-                pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                // pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
                 ref={register({ required: true })}
                 className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
                 placeholder="Password"

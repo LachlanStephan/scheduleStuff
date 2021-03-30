@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBrush, faMoon, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Settings = () => {
   const darkmodeIcon = <FontAwesomeIcon icon={faMoon} />;
