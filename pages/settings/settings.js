@@ -12,7 +12,7 @@ const Settings = () => {
   const updateNameIcon = <FontAwesomeIcon icon={faUserAlt} />;
 
   const router = useRouter();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const [updateName, setUpdateName] = useState("");
   const [logoutFail, setLogoutFail] = useState("");
 
@@ -92,6 +92,7 @@ const Settings = () => {
           >
             Go
           </button>
+          {errors.newName && "This cannot be blank"}
           <div className="text-black">{updateName}</div>
           <hr className="pb-2"></hr>
         </form>

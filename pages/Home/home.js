@@ -1,6 +1,6 @@
 import Layout from "../../components/layout/layout";
 import PageContent from "../common/pageContent";
-import getUSerName from "../common/getUserName";
+import getUserName from "../common/getUserName";
 import getUserEvent from "../common/getNextEvent";
 
 const Home = (props) => {
@@ -9,7 +9,7 @@ const Home = (props) => {
       <title>Home</title>
       <PageContent
         heading="Schedule stuff"
-        subHeading={`Hello  ${getUSerName()}`}
+        subHeading={`Hello  ${getUserName()}`}
         text={`Your next event is ${getUserEvent()}`}
       />
       <div className="min-h-screen"></div>

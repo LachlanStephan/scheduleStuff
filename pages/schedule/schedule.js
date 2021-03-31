@@ -11,10 +11,15 @@ import {
   TrailingActions,
 } from "react-swipeable-list";
 import "react-swipeable-list/dist/styles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const Schedule = (props) => {
   // Next router
   const router = useRouter();
+
+  // Trash icon
+  const trashIcon = <FontAwesomeIcon icon={faTrash} />;
 
   // For the fetch call
   const [schedule, setSchedule] = useState([]);
@@ -22,6 +27,10 @@ const Schedule = (props) => {
   // Set the fetch to current date
   const [curDate, setCurDate] = useState(new Date());
 
+  // Message for failed delete
+  const [failedDel, setFailedDel] = useState("");
+
+  // Fetch the users schedule
   useEffect(() => {
     let url = "http://localhost:5000/schedule/" + curDate;
     fetch(url, {
@@ -51,6 +60,7 @@ const Schedule = (props) => {
     });
   }, [curDate]);
 
+  // Fetch called on swipe completion
   const deleteEvent = (event_ID) => {
     let url = "http://localhost:5000/deleteEvent";
     fetch(url, {
@@ -60,14 +70,20 @@ const Schedule = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
+    }).then((res) => {
+      if (res.status === 400) {
+        router.push("/schedule/schedule");
+        setFailedDel("Sorry we couldn't delete that right now");
+      }
     });
   };
 
+  // For swipeable delete
   const trailingActions = (event_ID) => (
     <TrailingActions>
       <SwipeAction destructive={true} onClick={() => deleteEvent(event_ID)}>
         <div className="bg-red-300 flex justify-center">
-          <button className="m-auto">Delete</button>
+          <button className="m-auto">{trashIcon}</button>
         </div>
       </SwipeAction>
     </TrailingActions>
@@ -79,13 +95,9 @@ const Schedule = (props) => {
       <Head>
         <title>Schedule</title>{" "}
       </Head>
-      <PageContent
-        heading="Schedule"
-        subHeading="hi there user!"
-        text="Check out your day below"
-      />
+      <PageContent heading="Schedule" text="Check out your day below" />
       <Calendar
-        className="w-full border-solid m-auto"
+        className="w-full border-solid m-auto p-1"
         onChange={setCurDate}
         value={curDate}
       />
@@ -108,26 +120,28 @@ const Schedule = (props) => {
                     key={schedule.event_ID}
                     className="w-full relative transform scale-100 text-xs py-1 border-b-2 border-blue-100 cursor-default"
                   >
-                    <td className="pl-5 pr-3 whitespace-no-wrap w-1/2">
+                    <div className="pl-5 pr-3 whitespace-no-wrap w-1/2">
                       <div className="text-gray-600">
-                        {new Date(schedule.startDate).toDateString()}
+                        {new Date(schedule.startDate)
+                          .toDateString()
+                          .slice(0, 10)}
                       </div>
                       <div>
-                        <p>{schedule.event_ID}</p>
-                        <p>{schedule.startTime}</p>
-                        <p>{schedule.endTime}</p>
+                        <p>{schedule.startTime.slice(0, 5)}</p>
+                        <p>{schedule.endTime.slice(0, 5)}</p>
                       </div>
                       <hr className="p-1"></hr>
-                    </td>
+                    </div>
 
-                    <td className="px-2 py-2 whitespace-no-wrap w-1/2">
-                      <div className="leading-5 text-gray-500 font-bold text-lg">
+                    <div className="px-1 py-1 whitespace-no-wrap w-1/2">
+                      <div className="leading-5 text-gray-500 font-semibold text-lg">
                         {schedule.eventName}
                       </div>
-                      <div className="leading-5 text-gray-900 text-md">
+                      <div className="leading-5 text-gray-900 text-sm">
                         {schedule.eventDescription}
                       </div>
-                    </td>
+                    </div>
+                    <div className="text-red-200">{failedDel}</div>
                   </SwipeableListItem>
                 ))}
               </div>
@@ -135,8 +149,8 @@ const Schedule = (props) => {
           </div>
         </div>
       ) : (
-        <div className="text-left w-4/5 lg:w-2/5 m-auto font-bold py-4">
-          Looks like you have nothing on today
+        <div className="text-left w-4/5 lg:w-2/5 m-auto font-bold py-8">
+          Looks like you have nothing on today - Try the plus below!
         </div>
       )}
     </Layout>
