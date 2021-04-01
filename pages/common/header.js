@@ -15,7 +15,7 @@ const Header = (props) => {
   const addEventIcon = <FontAwesomeIcon icon={faPlus} />;
 
   return (
-    <div className="sticky w-full text-left m-auto flex flex-col pt-2 text-gray-500 bottom-0 bg-gray-200">
+    <div className="h-autuo sticky w-full text-left m-auto flex flex-col pt-2 text-gray-500 bottom-0 bg-gray-200">
       <main className="flex ml-1 flex-row py-2 justify-evenly">
         <Link href="/home/home">
           <a className="hover:text-gray-300 foucs:text-gray-300">{homeIcon}</a>

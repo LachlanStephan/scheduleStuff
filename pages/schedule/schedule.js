@@ -13,10 +13,39 @@ import {
 import "react-swipeable-list/dist/styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { io } from "socket.io-client";
+
+// MAYBE need to add an edit option to schedule
 
 const Schedule = (props) => {
   // Next router
   const router = useRouter();
+
+  // Socket io from web service
+  const socket = io("http://localhost:5000");
+
+  socket.on("connect", () => {
+    // either with send()
+    socket.send("Hello!");
+
+    // or with emit() and custom event names
+    socket.emit(
+      "salutations",
+      "Hello!",
+      { mr: "john" },
+      Uint8Array.from([1, 2, 3, 4])
+    );
+  });
+
+  // handle the event sent with socket.send()
+  socket.on("message", (data) => {
+    console.log(data);
+  });
+
+  // handle the event sent with socket.emit()
+  socket.on("greetings", (elem1, elem2, elem3) => {
+    console.log(elem1, elem2, elem3);
+  });
 
   // Trash icon
   const trashIcon = <FontAwesomeIcon icon={faTrash} />;
@@ -130,7 +159,7 @@ const Schedule = (props) => {
                         <p>{schedule.startTime.slice(0, 5)}</p>
                         <p>{schedule.endTime.slice(0, 5)}</p>
                       </div>
-                      <hr className="p-1"></hr>
+                      <hr className="p-1 opacity-50"></hr>
                     </div>
 
                     <div className="px-1 py-1 whitespace-no-wrap w-1/2">

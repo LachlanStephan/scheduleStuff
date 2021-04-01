@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBrush, faMoon, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import getID from "../common/getUserID";
 
 const Settings = () => {
   const darkmodeIcon = <FontAwesomeIcon icon={faMoon} />;
@@ -66,16 +67,15 @@ const Settings = () => {
         subHeading=""
         text="Adjust your settings here"
       />
+      {/* got rid of dark mode - tailwind offers in built based off system settings */}
       <div className="min-h-screen text-left">
-        <div className="pl-5">
-          <hr className="pb-2"></hr>
-          <h4 className="pb-2">Dark mode</h4>
-          <button className="hover:opacity-10 focus:opacity-10 ease-in duration-300">
-            {darkmodeIcon}
-          </button>
-          <hr className="pb-2"></hr>
-        </div>
         <form onSubmit={handleSubmit(onSubmit)} className="pl-5">
+          <div className="">
+            <hr className="pb-2"></hr>
+            <h4 className="pb-2">{`Your user id: ${getID()}`}</h4>
+            <hr className="pb-2"></hr>
+          </div>
+
           <hr className="pb-2"></hr>
           <h4 className="pb-2">Change your name</h4>
           {updateNameIcon}

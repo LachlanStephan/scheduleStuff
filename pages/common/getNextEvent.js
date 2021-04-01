@@ -7,7 +7,7 @@ const getUserEvent = (props) => {
     fetch(url, {
       method: "GET",
       credentials: "include",
-      headerser: {
+      headers: {
         "Content-Type": "application/json",
       },
     })
