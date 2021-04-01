@@ -49,7 +49,7 @@ const AddSchedule = (props) => {
           <div className="relative px-4 pb-4 bg-white md:mx-0 shadow sm:p-10 w-full">
             <div className="max-w-md mx-auto">
               <div className="divide-y divide-gray-200">
-                <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                <div className="py-2 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                   <div className="flex flex-col">
                     <label className="leading-loose">Event Title</label>
                     <input

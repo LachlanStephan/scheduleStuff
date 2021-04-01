@@ -60,6 +60,31 @@ const Settings = () => {
       });
   };
 
+  const addFriend = () => {
+    let url = "http://localhost:5000/addFriend";
+    fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify(userID),
+    })
+      .then((res) => res)
+      .then((data) => {
+        console.log(data.status);
+        if (data.status === 400) {
+          router.push("/settings/settings");
+          setAddFriendMsg(
+            "We couldn't add your friend right now, try again later"
+          );
+        }
+        if (data.status === 200) {
+          setAddFriendMsg("Your request has been sent");
+        }
+      });
+  };
+
   return (
     <Layout>
       <PageContent
@@ -68,15 +93,32 @@ const Settings = () => {
         text="Adjust your settings here"
       />
       {/* got rid of dark mode - tailwind offers in built based off system settings */}
-      <div className="min-h-screen text-left">
-        <form onSubmit={handleSubmit(onSubmit)} className="pl-5">
-          <div className="">
-            <hr className="pb-2"></hr>
-            <h4 className="pb-2">{`Your user id: ${getID()}`}</h4>
-            <hr className="pb-2"></hr>
-          </div>
-
+      <div className="min-h-screen pl-5 text-left">
+        <div className="">
           <hr className="pb-2"></hr>
+          <h4 className="pb-2">{`Your user id: ${getID()}`}</h4>
+          <hr className="pb-2"></hr>
+        </div>
+        <div>
+          <h4 className="pb-2">Add a friend by entering their userID below</h4>
+          {updateNameIcon}
+          <input
+            className="border-2 border-indigo-400 rounded-xl pl-2 pr-2 shadow-md placeholder-gray-200: ml-2"
+            type="number"
+            name="userID"
+            placeholder="enter friend id"
+          />
+          <button
+            className="w-14 pl-2 pr-2 shadow-md mb-2 border-2 border-indigo-400 rounded-xl"
+            type="submit"
+            onClick={() => addFriend()}
+          >
+            Go
+          </button>
+        </div>
+
+        <hr className="pb-2"></hr>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <h4 className="pb-2">Change your name</h4>
           {updateNameIcon}
           <input
@@ -94,9 +136,8 @@ const Settings = () => {
           </button>
           {errors.newName && "This cannot be blank"}
           <div className="text-black">{updateName}</div>
-          <hr className="pb-2"></hr>
         </form>
-        <div className="pl-5">
+        <div>
           <hr className="pb-2"></hr>
           <h4 className="pb-2">Change theme</h4>
           <button className="hover:opacity-10 focus:opacity-10 ease-in duration-300 text-red-400">
@@ -110,7 +151,7 @@ const Settings = () => {
           </button>
           <hr className="pb-2"></hr>
         </div>
-        <div className="pl-5 pb-1">
+        <div className="pb-2">
           <button
             onClick={logout}
             className="border-2 rounded-xl p-1 bg-indigo-100"
@@ -119,7 +160,7 @@ const Settings = () => {
           </button>
           <div className="text-red-300">{logoutFail}</div>
         </div>
-        <hr className="pb-2"></hr>
+        <hr className="py-2"></hr>
       </div>
     </Layout>
   );

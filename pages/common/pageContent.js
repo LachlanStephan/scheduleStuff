@@ -1,7 +1,7 @@
 const PageContent = (props) => {
   return (
     <div className="text-center w-full m-auto">
-      <main className="my-9 py-1 w-full m-auto rounded-xl justify-center">
+      <main className="my-3 py-1 w-full m-auto rounded-xl justify-center">
         <div className="text-indigo-400">
           <h1 className="p-2 font-extrabold text-3xl">{props.heading}</h1>
         </div>
