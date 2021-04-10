@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Login from "./login/login";
+import Header from "./common/header";
 // Removes favIcon err
 // Manifest file
 

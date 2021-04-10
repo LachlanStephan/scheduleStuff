@@ -134,7 +134,7 @@ const Schedule = (props) => {
         <div className="text-left w-full lg:w-2/5 m-auto">
           <div className="container w-full mx-auto py-10 flex justify-center h-screen">
             <div className="w-full h-full flex flex-col">
-              <div className="bg-white text-sm text-gray-500 font-bold px-5 py-2 shadow border-b border-gray-300">
+              <div className="bg-white text-md text-gray-500 font-bold px-5 py-2 shadow border-b border-gray-300">
                 My day
               </div>
               <div
@@ -147,9 +147,9 @@ const Schedule = (props) => {
                     threshold={0.6}
                     trailingActions={trailingActions(schedule.event_ID)}
                     key={schedule.event_ID}
-                    className="w-full relative transform scale-100 text-xs py-1 border-b-2 border-blue-100 cursor-default"
+                    className="w-full relative transform scale-100 text-xs py-1 border-b-2 border-blue-100 cursor-default h-auto flex flex-wrap"
                   >
-                    <div className="pl-5 pr-3 whitespace-no-wrap w-1/2">
+                    <div className="pl-5 pr-3 w-1/2">
                       <div className="text-gray-600">
                         {new Date(schedule.startDate)
                           .toDateString()
@@ -162,7 +162,7 @@ const Schedule = (props) => {
                       <hr className="p-1 opacity-50"></hr>
                     </div>
 
-                    <div className="px-1 py-1 whitespace-no-wrap w-1/2">
+                    <div className="px-1 py-1 w-1/2">
                       <div className="leading-5 text-gray-500 font-semibold text-lg">
                         {schedule.eventName}
                       </div>
@@ -178,7 +178,7 @@ const Schedule = (props) => {
           </div>
         </div>
       ) : (
-        <div className="text-left w-4/5 lg:w-2/5 m-auto font-bold py-8">
+        <div className="min-h-screen text-left w-4/5 lg:w-2/5 m-auto font-bold py-8">
           Looks like you have nothing on today - Try the plus below!
         </div>
       )}

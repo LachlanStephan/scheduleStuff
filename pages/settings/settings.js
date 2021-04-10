@@ -60,6 +60,8 @@ const Settings = () => {
       });
   };
 
+  const [addMsg, setAddMsg] = useState("");
+  const [friendID, setFriendID] = useState([]);
   const addFriend = () => {
     let url = "http://localhost:5000/addFriend";
     fetch(url, {
@@ -67,20 +69,18 @@ const Settings = () => {
         "Content-Type": "application/json",
       },
       method: "POST",
+      body: JSON.stringify([friendID]),
       credentials: "include",
-      body: JSON.stringify(userID),
     })
       .then((res) => res)
       .then((data) => {
         console.log(data.status);
         if (data.status === 400) {
           router.push("/settings/settings");
-          setAddFriendMsg(
-            "We couldn't add your friend right now, try again later"
-          );
+          setAddMsg("We couldn't add your friend right now, try again later");
         }
         if (data.status === 200) {
-          setAddFriendMsg("Your request has been sent");
+          setAddMsg("Your request has been sent");
         }
       });
   };
@@ -101,11 +101,14 @@ const Settings = () => {
         </div>
         <div>
           <h4 className="pb-2">Add a friend by entering their userID below</h4>
-          {updateNameIcon}
           <input
-            className="border-2 border-indigo-400 rounded-xl pl-2 pr-2 shadow-md placeholder-gray-200: ml-2"
+            className="border-2 border-indigo-400 rounded-xl pl-2 pr-2 shadow-md placeholder-gray-300"
             type="number"
-            name="userID"
+            name="friendID"
+            value={friendID}
+            onChange={(e) => {
+              setFriendID(e.target.value);
+            }}
             placeholder="enter friend id"
           />
           <button
@@ -115,14 +118,14 @@ const Settings = () => {
           >
             Go
           </button>
+          <div>{addMsg}</div>
         </div>
 
         <hr className="pb-2"></hr>
         <form onSubmit={handleSubmit(onSubmit)}>
           <h4 className="pb-2">Change your name</h4>
-          {updateNameIcon}
           <input
-            className="border-2 border-indigo-400 rounded-xl pl-2 pr-2 shadow-md placeholder-gray-200: ml-2"
+            className="border-2 border-indigo-400 rounded-xl pl-2 pr-2 shadow-md placeholder-gray-300"
             type="text"
             name="newName"
             ref={register({ required: true })}
@@ -137,16 +140,16 @@ const Settings = () => {
           {errors.newName && "This cannot be blank"}
           <div className="text-black">{updateName}</div>
         </form>
-        <div>
+        <div className="">
           <hr className="pb-2"></hr>
           <h4 className="pb-2">Change theme</h4>
-          <button className="hover:opacity-10 focus:opacity-10 ease-in duration-300 text-red-400">
+          <button className="h-5 text-xl w-5 hover:opacity-10 focus:opacity-30 ease-in duration-300 text-red-400">
             {changeThemeIcon}
           </button>
-          <button className="hover:opacity-10 focus:opacity-10 ease-in duration-300 text-green-400 ml-2">
+          <button className="h-5 w-5 text-xl hover:opacity-10 focus:opacity-30 ease-in duration-300 text-green-400 ml-2">
             {changeThemeIcon}
           </button>
-          <button className="hover:opacity-10 focus:opacity-10 ease-in duration-300 text-indigo-400 ml-2">
+          <button className="h-5 w-5 text-xl hover:opacity-10 focus:opacity-30 ease-in duration-300 text-indigo-400 ml-2">
             {changeThemeIcon}
           </button>
           <hr className="pb-2"></hr>
