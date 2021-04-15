@@ -48,7 +48,10 @@ const Login = (props) => {
         <title>Login</title>
       </Head>
       <PageContent heading="ScheduleStuff" subHeading="" text="" />
-      <div className="bg-white lg:w-4/12 md:6/12 w-10/12 m-auto my-10 shadow-md">
+      <div>
+        <img className="m-auto w-auto h-auto" src="/ssIcon-96x96.png" />
+      </div>
+      <div className="bg-white lg:w-4/12 md:6/12 w-10/12 m-auto shadow-md">
         <div className="py-8 px-8 rounded-xl">
           <h1 className="font-medium text-2xl mt-3 text-center">Login</h1>
           <form onSubmit={handleSubmit(onSubmit)} className="mt-6">

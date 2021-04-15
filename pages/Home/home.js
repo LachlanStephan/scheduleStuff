@@ -4,9 +4,10 @@ import getUserName from "../common/getUserName";
 import getUserEvent from "../common/getNextEvent";
 import { useEffect, useState } from "react";
 import Router from "next/dist/next-server/server/router";
+import Head from "next/head";
 
 const Home = (props) => {
-  const [checkFriend, setCheckFriend] = useState("");
+  const [checkFriend, setCheckFriend] = useState([]);
   let url = "http://localhost:5000/checkFriend";
   useEffect(() => {
     fetch(url, {
@@ -19,7 +20,10 @@ const Home = (props) => {
       console.log(res.status, "checkFriend");
       switch (res.status) {
         case 400:
-          setCheckFriend("No current messages");
+          setCheckFriend("");
+          break;
+        case 204:
+          setCheckFriend("");
           break;
         case 200:
           res.json().then((data) => {
@@ -74,24 +78,28 @@ const Home = (props) => {
 
   return (
     <Layout>
-      <title>Home</title>
+      <Head>
+        <title>Home</title> <link rel="manifest" href="/manifest.json"></link>;
+      </Head>
+      <div>
+        <img className="m-auto" src="/ssIcon-96x96.png" />
+      </div>
       <PageContent
-        heading="Schedule stuff"
         subHeading={`Hi there  ${getUserName()}`}
         text={`Your next event is ${getUserEvent()}`}
       />
       {checkFriend.length > 0 ? (
         <div className="min-h-screen">
           <div id="friendReq" className="p-5">
-            You have a freind request from {checkFriend}
+            You have a freind request from:{checkFriend}
+            <button
+              onClick={acceptFriend}
+              className="p-2 ml-5 rounded-lg bg-green-300"
+            >
+              Accept
+            </button>
+            <button className="p-2 ml-5 rounded-lg bg-red-300">Decline</button>
           </div>
-          <button
-            onClick={acceptFriend}
-            className="p-2 ml-5 rounded-lg bg-green-300"
-          >
-            Accept
-          </button>
-          <button className="p-2 ml-5 rounded-lg bg-red-300">Decline</button>
         </div>
       ) : (
         <div className="text-left min-h-screen ml-5">

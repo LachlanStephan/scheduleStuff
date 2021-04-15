@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import getID from "../common/getUserID";
+import Head from "next/head";
 
 const Settings = () => {
   const darkmodeIcon = <FontAwesomeIcon icon={faMoon} />;
@@ -87,6 +88,10 @@ const Settings = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>Settings</title>{" "}
+        <link rel="manifest" href="/manifest.json"></link>;
+      </Head>
       <PageContent
         heading="Settings"
         subHeading=""

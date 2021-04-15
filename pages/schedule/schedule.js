@@ -1,7 +1,7 @@
 import Layout from "../../components/layout/layout";
 import Head from "next/head";
 import PageContent from "../common/pageContent";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useRouter } from "next/router";
@@ -27,25 +27,16 @@ const Schedule = (props) => {
   socket.on("connect", () => {
     // either with send()
     socket.send("Hello!");
-
-    // or with emit() and custom event names
-    socket.emit(
-      "salutations",
-      "Hello!",
-      { mr: "john" },
-      Uint8Array.from([1, 2, 3, 4])
-    );
   });
 
   // handle the event sent with socket.send()
-  socket.on("message", (data) => {
-    console.log(data);
+  socket.on("message", (event_ID) => {
+    console.log(event_ID);
   });
 
-  // handle the event sent with socket.emit()
-  socket.on("greetings", (elem1, elem2, elem3) => {
-    console.log(elem1, elem2, elem3);
-  });
+  const shareEvent = (event_ID) => {
+    socket.emit("message", event_ID);
+  };
 
   // Trash icon
   const trashIcon = <FontAwesomeIcon icon={faTrash} />;
@@ -118,11 +109,35 @@ const Schedule = (props) => {
     </TrailingActions>
   );
 
+  // Fetch for add friend to event
+  // const [friendID, setFriendID] = useState([]);
+
+  // const [eventSent, setEventSent] = useState("");
+  // const addFriendToEvent = (event_ID) => {
+  //   let url = "http://localhost:5000/addFriendToEvent";
+  //   fetch(url, {
+  //     credentials: "include",
+  //     method: "POST",
+  //     body: JSON.stringify({ friendID, event_ID }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   }).then((res) => {
+  //     if (res.status === 200) {
+  //       setEventSent("event invite sent");
+  //     }
+  //     if (res.status === 400) {
+  //       setEventSent("Sorry we could not do that for you right now");
+  //     }
+  //   });
+  // };
+
   return (
     <Layout>
       {" "}
       <Head>
         <title>Schedule</title>{" "}
+        <link rel="manifest" href="/manifest.json"></link>;
       </Head>
       <PageContent heading="Schedule" text="Check out your day below" />
       <Calendar
@@ -171,6 +186,23 @@ const Schedule = (props) => {
                       </div>
                     </div>
                     <div className="text-red-200">{failedDel}</div>
+                    {/* <div className="w-1/6">
+                      <input
+                        className="border-2 border-indigo-300 h-7 w-7 rounded-md"
+                        type="number"
+                        name="friendID"
+                        id="friendID"
+                        value={friendID}
+                        onChange={(e) => setFriendID(e.target.value)}
+                      />
+                      <button
+                        className="border-2 bg-red-300 rounded-md h-7 w-7"
+                        type="submit"
+                        onClick={addFriendToEvent}
+                      >
+                        Go
+                      </button>
+                    </div> */}
                   </SwipeableListItem>
                 ))}
               </div>

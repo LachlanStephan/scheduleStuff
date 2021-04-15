@@ -38,7 +38,8 @@ const AddSchedule = (props) => {
     <Layout>
       {" "}
       <Head>
-        <title>Add Schedule</title>
+        <title>Add schedule</title>{" "}
+        <link rel="manifest" href="/manifest.json"></link>;
       </Head>
       <PageContent heading="Add event" />
       <form
