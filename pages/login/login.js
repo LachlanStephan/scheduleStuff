@@ -51,7 +51,7 @@ const Login = (props) => {
       <div>
         <img className="m-auto w-auto h-auto" src="/ssIcon-96x96.png" />
       </div>
-      <div className="bg-white lg:w-4/12 md:6/12 w-10/12 m-auto shadow-md">
+      <div className="lg:w-4/12 md:6/12 w-10/12 m-auto shadow-md">
         <div className="py-8 px-8 rounded-xl">
           <h1 className="font-medium text-2xl mt-3 text-center">Login</h1>
           <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
@@ -64,7 +64,6 @@ const Login = (props) => {
                 autoFocus
                 name="email"
                 id="email"
-                // pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
                 ref={register({ required: true })}
                 className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
                 placeholder="Username"

@@ -103,7 +103,7 @@ const Schedule = (props) => {
     <TrailingActions>
       <SwipeAction destructive={true} onClick={() => deleteEvent(event_ID)}>
         <div className="bg-red-300 flex justify-center">
-          <button className="m-auto">{trashIcon}</button>
+          <button className="m-auto font-extrabold">X</button>
         </div>
       </SwipeAction>
     </TrailingActions>
@@ -141,7 +141,7 @@ const Schedule = (props) => {
       </Head>
       <PageContent heading="Schedule" text="Check out your day below" />
       <Calendar
-        className="w-full border-solid m-auto p-1"
+        className="w-full border-solid m-auto p-1 bg-white text-gray-700 dark:bg-gray-700 dark:text-gray-300"
         onChange={setCurDate}
         value={curDate}
       />
@@ -149,44 +149,44 @@ const Schedule = (props) => {
         <div className="text-left w-full lg:w-2/5 m-auto">
           <div className="container w-full mx-auto py-10 flex justify-center h-screen">
             <div className="w-full h-full flex flex-col">
-              <div className="bg-white text-md text-gray-500 font-bold px-5 py-2 shadow border-b border-gray-300">
+              <div className="text-md text-gray-500 font-bold px-5 py-2 shadow border-b border-gray-300">
                 My day
               </div>
               <div
-                className="w-full h-full overflow-auto shadow bg-white"
+                className="w-full h-full overflow-auto shadow"
                 id="journal-scroll"
               >
                 {schedule.map((schedule, index) => (
-                  <SwipeableListItem
-                    fullSwipe={true}
-                    threshold={0.6}
-                    trailingActions={trailingActions(schedule.event_ID)}
-                    key={schedule.event_ID}
-                    className="w-full relative transform scale-100 text-xs py-1 border-b-2 border-blue-100 cursor-default h-auto flex flex-wrap"
-                  >
-                    <div className="pl-5 pr-3 w-1/2">
-                      <div className="text-gray-600">
-                        {new Date(schedule.startDate)
-                          .toDateString()
-                          .slice(0, 10)}
+                  <>
+                    <SwipeableListItem
+                      fullSwipe={true}
+                      threshold={0.6}
+                      trailingActions={trailingActions(schedule.event_ID)}
+                      key={schedule.event_ID}
+                      className="w-full relative transform scale-100 text-xs border-b-1 border-gray-300 cursor-default h-auto flex flex-wrap"
+                    >
+                      <div className="pl-5 w-1/2">
+                        <div className="">
+                          {new Date(schedule.startDate)
+                            .toDateString()
+                            .slice(0, 10)}
+                        </div>
+                        <div>
+                          <p>{schedule.startTime.slice(0, 5)}</p>
+                          <p>{schedule.endTime.slice(0, 5)}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p>{schedule.startTime.slice(0, 5)}</p>
-                        <p>{schedule.endTime.slice(0, 5)}</p>
-                      </div>
-                      <hr className="p-1 opacity-50"></hr>
-                    </div>
 
-                    <div className="px-1 py-1 w-1/2">
-                      <div className="leading-5 text-gray-500 font-semibold text-lg">
-                        {schedule.eventName}
+                      <div className="w-1/2">
+                        <div className="leading-5 font-semibold">
+                          {schedule.eventName}
+                        </div>
+                        <div className="leading-5 text-sm">
+                          {schedule.eventDescription}
+                        </div>
                       </div>
-                      <div className="leading-5 text-gray-900 text-sm">
-                        {schedule.eventDescription}
-                      </div>
-                    </div>
-                    <div className="text-red-200">{failedDel}</div>
-                    {/* <div className="w-1/6">
+                      <div className="text-red-200">{failedDel}</div>
+                      {/* <div className="w-1/6">
                       <input
                         className="border-2 border-indigo-300 h-7 w-7 rounded-md"
                         type="number"
@@ -203,14 +203,16 @@ const Schedule = (props) => {
                         Go
                       </button>
                     </div> */}
-                  </SwipeableListItem>
+                    </SwipeableListItem>
+                    <hr className="p-1 opacity-50 w-screen"></hr>
+                  </>
                 ))}
               </div>
             </div>
           </div>
         </div>
       ) : (
-        <div className="min-h-screen text-left w-4/5 lg:w-2/5 m-auto font-bold py-8">
+        <div className="text-left w-4/5 lg:w-2/5 m-auto font-bold py-8">
           Looks like you have nothing on today - Try the plus below!
         </div>
       )}

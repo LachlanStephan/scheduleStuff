@@ -5,6 +5,7 @@ import getUserEvent from "../common/getNextEvent";
 import { useEffect, useState } from "react";
 import Router from "next/dist/next-server/server/router";
 import Head from "next/head";
+import { useTheme } from "next-themes";
 
 const Home = (props) => {
   const [checkFriend, setCheckFriend] = useState([]);
@@ -54,6 +55,25 @@ const Home = (props) => {
     });
   };
 
+  const [rejectReq, setRejectReq] = useState("");
+  const rejectFriend = () => {
+    let url = "http://localhost:5000/rejectFriend";
+    fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      method: "POST",
+    }).then((res) => {
+      if (res.status === 400) {
+        setRejectReq("sorry we failed to complete that task");
+      }
+      if (res.status === 200) {
+        setRejectReq("Request denied");
+      }
+    });
+  };
+
   const [friendsList, setFriendsList] = useState([]);
   useEffect(() => {
     let url = "http://localhost:5000/friendsList";
@@ -77,41 +97,45 @@ const Home = (props) => {
   }, []);
 
   return (
-    <Layout>
-      <Head>
-        <title>Home</title> <link rel="manifest" href="/manifest.json"></link>;
-      </Head>
-      <div>
-        <img className="m-auto" src="/ssIcon-96x96.png" />
-      </div>
-      <PageContent
-        subHeading={`Hi there  ${getUserName()}`}
-        text={`Your next event is ${getUserEvent()}`}
-      />
-      {checkFriend.length > 0 ? (
-        <div className="min-h-screen">
-          <div id="friendReq" className="p-5">
-            You have a freind request from:{checkFriend}
-            <button
-              onClick={acceptFriend}
-              className="p-2 ml-5 rounded-lg bg-green-300"
-            >
-              Accept
-            </button>
-            <button className="p-2 ml-5 rounded-lg bg-red-300">Decline</button>
-          </div>
-        </div>
-      ) : (
-        <div className="text-left min-h-screen ml-5">
-          Friends list:
-          {friendsList.map((friendsList, index) => (
-            <div className="" key={index}>
-              {friendsList.fName}
+    <>
+      <html>
+        <Layout>
+          <Head>
+            <title>Home</title>{" "}
+            <link rel="manifest" href="/manifest.json"></link>;
+          </Head>
+          <PageContent
+            subHeading={`Hi there  ${getUserName()}`}
+            text={`Your next event is ${getUserEvent()}`}
+          />
+          {checkFriend.length > 0 ? (
+            <div className="">
+              <div id="friendReq" className="">
+                You have a freind request from:{checkFriend}
+                <button
+                  onClick={acceptFriend}
+                  className="p-2 ml-5 rounded-lg bg-green-300"
+                >
+                  Accept
+                </button>
+                <button className="p-2 ml-5 rounded-lg bg-red-300">
+                  Decline
+                </button>
+              </div>
             </div>
-          ))}
-        </div>
-      )}
-    </Layout>
+          ) : (
+            <div className="text-left ml-5">
+              Friends list:
+              {friendsList.map((friendsList, index) => (
+                <div className="" key={index}>
+                  {friendsList.fName}
+                </div>
+              ))}
+            </div>
+          )}
+        </Layout>
+      </html>
+    </>
   );
 };
 
