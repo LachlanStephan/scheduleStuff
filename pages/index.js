@@ -5,9 +5,7 @@ export default function App() {
   return (
     <>
       <Head>
-        <link rel="shortcut icon" href="#"></link>;
-        <link rel="manifest" href="/manifest.json"></link>;
-        <title>scheduleStuff</title>
+        <link rel="shortcut icon" href="#"></link>;<title>scheduleStuff</title>
       </Head>
       <Login />
     </>

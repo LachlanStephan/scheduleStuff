@@ -13,11 +13,11 @@ html {
 }
 
 [data-theme="dark"] {
-  --background: black;
+  --background: grey;
   --foreground: white;
 }
 
 [data-theme="light"] {
   --background: white;
-  --foreground: black;
+  --foreground: grey;
 }

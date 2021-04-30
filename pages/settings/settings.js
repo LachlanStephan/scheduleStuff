@@ -1,11 +1,5 @@
 import Layout from "../../components/layout/layout";
 import PageContent from "../common/pageContent";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBrush,
-  faMoon,
-  faLightbulb,
-} from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
@@ -14,10 +8,6 @@ import Head from "next/head";
 import { useTheme } from "next-themes";
 
 const Settings = () => {
-  const changeThemeIcon = <FontAwesomeIcon icon={faBrush} />;
-  const moon = <FontAwesomeIcon icon={faMoon} />;
-  const bulb = <FontAwesomeIcon icon={faLightbulb} />;
-
   const router = useRouter();
   const { register, handleSubmit, errors } = useForm();
   const [updateName, setUpdateName] = useState("");
@@ -198,7 +188,7 @@ const Settings = () => {
           {errors.newName && "This cannot be blank"}
           <div className="text-black">{updateName}</div>
         </form>
-        <div className="my-2">
+        {/* <div className="my-2">
           <h4 className="pb-2">Change theme</h4>
           <button className="h-5 text-md w-5 hover:opacity-10 focus:opacity-30 ease-in duration-300 text-red-100">
             {changeThemeIcon}
@@ -210,7 +200,7 @@ const Settings = () => {
             {changeThemeIcon}
           </button>
           <hr className="pb-2 w-4/5 my-2"></hr>
-        </div>
+        </div> */}
         <div className="pb-2">
           <button
             onClick={logout}

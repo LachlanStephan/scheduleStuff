@@ -1,7 +1,7 @@
 import Layout from "../../components/layout/layout";
 import Head from "next/head";
 import PageContent from "../common/pageContent";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useRouter } from "next/router";
@@ -13,7 +13,8 @@ import {
 import "react-swipeable-list/dist/styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
+import PacmanLoader from "react-spinners/PacmanLoader";
 
 // MAYBE need to add an edit option to schedule
 
@@ -22,21 +23,21 @@ const Schedule = (props) => {
   const router = useRouter();
 
   // Socket io from web service
-  const socket = io("http://localhost:5000");
+  // const socket = io("http://localhost:5000");
 
-  socket.on("connect", () => {
-    // either with send()
-    socket.send("Hello!");
-  });
+  // socket.on("connect", () => {
+  // either with send()
+  //   socket.send("Hello!");
+  // });
 
   // handle the event sent with socket.send()
-  socket.on("message", (event_ID) => {
-    console.log(event_ID);
-  });
+  // socket.on("message", (event_ID) => {
+  //   console.log(event_ID);
+  // });
 
-  const shareEvent = (event_ID) => {
-    socket.emit("message", event_ID);
-  };
+  // const shareEvent = (event_ID) => {
+  //   socket.emit("message", event_ID);
+  // };
 
   // Trash icon
   const trashIcon = <FontAwesomeIcon icon={faTrash} />;
@@ -71,10 +72,12 @@ const Schedule = (props) => {
         case 204:
           console.log("no content");
           setSchedule([]);
+          setLoading(false);
           break;
         case 200:
           res.json().then((data) => {
             setSchedule(data);
+            setLoading(false);
           });
       }
     });
@@ -103,11 +106,13 @@ const Schedule = (props) => {
     <TrailingActions>
       <SwipeAction destructive={true} onClick={() => deleteEvent(event_ID)}>
         <div className="bg-red-300 flex justify-center">
-          <button className="m-auto font-extrabold">X</button>
+          <button className="m-auto text-lg font-extrabold">{trashIcon}</button>
         </div>
       </SwipeAction>
     </TrailingActions>
   );
+
+  const [loading, setLoading] = useState(true);
 
   // Fetch for add friend to event
   // const [friendID, setFriendID] = useState([]);
@@ -165,8 +170,8 @@ const Schedule = (props) => {
                       key={schedule.event_ID}
                       className="w-full relative transform scale-100 text-xs border-b-1 border-gray-300 cursor-default h-auto flex flex-wrap"
                     >
-                      <div className="pl-5 w-1/2">
-                        <div className="">
+                      <div className="pl-5 w-1/2 mb-3">
+                        <div className="leading-5 font-semibold">
                           {new Date(schedule.startDate)
                             .toDateString()
                             .slice(0, 10)}
@@ -177,7 +182,7 @@ const Schedule = (props) => {
                         </div>
                       </div>
 
-                      <div className="w-1/2">
+                      <div className="pl-1 w-1/2">
                         <div className="leading-5 font-semibold">
                           {schedule.eventName}
                         </div>
@@ -204,16 +209,19 @@ const Schedule = (props) => {
                       </button>
                     </div> */}
                     </SwipeableListItem>
-                    <hr className="p-1 opacity-50 w-screen"></hr>
                   </>
                 ))}
               </div>
             </div>
           </div>
         </div>
-      ) : (
+      ) : !loading ? (
         <div className="text-left w-4/5 lg:w-2/5 m-auto font-bold py-8">
           Looks like you have nothing on today - Try the plus below!
+        </div>
+      ) : (
+        <div className="text-left w-4/5 lg:w-2/5 m-auto font-bold py-8">
+          <PacmanLoader loading={loading} size={25} />
         </div>
       )}
     </Layout>

@@ -5,7 +5,6 @@ import getUserEvent from "../common/getNextEvent";
 import { useEffect, useState } from "react";
 import Router from "next/dist/next-server/server/router";
 import Head from "next/head";
-import { useTheme } from "next-themes";
 
 const Home = (props) => {
   const [checkFriend, setCheckFriend] = useState([]);

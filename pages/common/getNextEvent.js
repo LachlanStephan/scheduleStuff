@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const getUserEvent = (props) => {
   let url = "http://localhost:5000/getUserEvent";
   const [userEvent, setUserEvent] = useState("");
+
   useEffect(() => {
     fetch(url, {
       method: "GET",
