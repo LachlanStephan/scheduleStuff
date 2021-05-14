@@ -47,9 +47,9 @@ const AddSchedule = (props) => {
       <PageContent heading="Add event" />
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="lex flex-col justify-center w-full h-auto overflow-scroll"
+        className="lex flex-col justify-center w-full h-auto overflow-auto"
       >
-        <div className="relative sm:max-w-xl sm:mx-auto h-auto overflow-scroll">
+        <div className="relative sm:max-w-xl sm:mx-auto h-auto overflow-auto">
           <div className="text-red-300 pl-5">{addEventErrMsg}</div>
           <div className="relative px-4 pb-4 md:mx-0 shadow sm:p-10 w-full">
             <div className="max-w-md mx-auto">

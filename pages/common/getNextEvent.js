@@ -14,8 +14,12 @@ const getUserEvent = (props) => {
     })
       .then((res) => res)
       .then((data) => {
+        console.log(data.status, "getEvent");
         if (data.status === 400) {
-          setUserEvent("unknown");
+          setUserEvent("No upcoming events");
+        }
+        if (data.status === 204) {
+          setUserEvent("No upcoming events");
         }
         if (data.status === 200) {
           data.json().then((data) => {

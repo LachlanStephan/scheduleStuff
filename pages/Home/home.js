@@ -122,7 +122,7 @@ const Home = (props) => {
                 </button>
               </div>
             </div>
-          ) : (
+          ) : friendsList.length > 0 ? (
             <div className="text-left ml-5">
               Friends list:
               {friendsList.map((friendsList, index) => (
@@ -131,6 +131,8 @@ const Home = (props) => {
                 </div>
               ))}
             </div>
+          ) : (
+            <div className="text-left ml-5">no Friends</div>
           )}
         </Layout>
       </html>

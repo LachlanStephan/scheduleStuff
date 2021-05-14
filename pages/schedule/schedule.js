@@ -161,7 +161,7 @@ const Schedule = (props) => {
                 className="w-full h-full overflow-auto shadow"
                 id="journal-scroll"
               >
-                {schedule.map((schedule, index) => (
+                {schedule.map((schedule, event_ID) => (
                   <>
                     <SwipeableListItem
                       fullSwipe={true}
