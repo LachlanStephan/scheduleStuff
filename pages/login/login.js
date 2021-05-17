@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import DateTime from "../../components/common/dateTime";
 
 const Login = () => {
   const { register, errors, handleSubmit } = useForm();
@@ -28,7 +27,7 @@ const Login = () => {
       .then((res) => res)
       .then((data) => {
         console.log(data.status, data.headers);
-        if (data.status === 401) {
+        if (data.status === 401 || data.status === 422) {
           router.push("/login/login");
           setnoLogin(
             "This account does not exist, try again or click the link below to register"

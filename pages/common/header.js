@@ -39,6 +39,8 @@ const Header = (props) => {
     });
   }, []);
 
+  const [showHelp, setShowHelp] = useState(false);
+
   return (
     <div className="h-autuo w-full text-left m-auto flex flex-col pt-2 fixed bottom-0 bg-gray-300 dark:bg-gray-800">
       <main className="text-xl m-2 flex p-1 flex-row py-2 justify-evenly">
@@ -68,6 +70,16 @@ const Header = (props) => {
               {adminLink.length > 0 ? adminIcon : ""}
             </a>
           </Link>
+        </div>
+        <div>
+          <div
+            onClick={() => {
+              setShowHelp(!showHelp);
+            }}
+          >
+            ?
+          </div>
+          {!showHelp ? <div></div> : <div>show silly tips</div>}
         </div>
       </main>
       <main className="flex flex-row ml-1 mb-1">
