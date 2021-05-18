@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
   // To check if user is logged in or not -> send them to login page if no
   useEffect(() => {
     let url = "http://localhost:5000/checkLogin";
-    let prodUrl = process.env.check_Login;
+    let prodUrl = "https://schedule-stuff.herokuapp.com/checkLogin";
     fetch(prodUrl || url, {
       credentials: "include",
       headers: {

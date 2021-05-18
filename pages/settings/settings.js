@@ -15,7 +15,7 @@ const Settings = () => {
 
   const onSubmit = (data) => {
     let url = "http://localhost:5000/updateName";
-    let prodUrl = process.env.update_Name;
+    let prodUrl = "https://schedule-stuff.herokuapp.com/updateName";
     fetch(prodUrl || url, {
       method: "PATCH",
       body: JSON.stringify(data),
@@ -40,7 +40,8 @@ const Settings = () => {
 
   const logout = () => {
     let url = "http://localhost:5000/logout";
-    fetch(url, {
+    let prodUrl = "https://schedule-stuff.herokuapp.com/logout";
+    fetch(prodUrl || url, {
       method: "POST",
       credentials: "include",
     })
@@ -61,7 +62,8 @@ const Settings = () => {
   const [friendID, setFriendID] = useState([]);
   const addFriend = () => {
     let url = "http://localhost:5000/addFriend";
-    fetch(url, {
+    let prodUrl = "https://schedule-stuff.herokuapp.com/addFriend";
+    fetch(prodUrl || url, {
       headers: {
         "Content-Type": "application/json",
       },

@@ -2,7 +2,7 @@ import { react, useEffect, useState } from "react";
 
 const getUserName = (props) => {
   let url = "http://localhost:5000/getUserName";
-  let prodUrl = process.env.getUser_Name;
+  let prodUrl = "https://schedule-stuff.herokuapp.com/getUserName";
   const [userName, setuserName] = useState("");
   useEffect(() => {
     fetch(prodUrl || url, {

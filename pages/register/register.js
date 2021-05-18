@@ -18,7 +18,7 @@ const Register = (props) => {
   const onSubmit = (data) => {
     console.log(data);
     let url = "http://localhost:5000/regUser";
-    let prodUrl = process.env.regUser;
+    let prodUrl = "https://schedule-stuff.herokuapp.com/regUser";
     fetch(prodUrl || url, {
       method: "POST",
       body: JSON.stringify(data),

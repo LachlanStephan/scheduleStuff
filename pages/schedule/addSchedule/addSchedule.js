@@ -13,7 +13,7 @@ const AddSchedule = (props) => {
 
   const onSubmit = (data) => {
     let url = "http://localhost:5000/addSchedule";
-    let prodUrl = process.env.add_Schedule;
+    let prodUrl = "https://schedule-stuff.herokuapp.com/addSchedule";
     fetch(prodUrl || url, {
       method: "POST",
       body: JSON.stringify(data),

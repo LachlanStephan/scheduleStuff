@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 const getID = () => {
   let url = "http://localhost:5000/getID";
-  let prodUrl = process.env.get_ID;
+  let prodUrl = "https://schedule-stuff.herokuapp.com/getID";
   const [id, setID] = useState("");
   useEffect(() => {
     fetch(prodUrl || url, {
