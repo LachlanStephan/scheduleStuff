@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Layout from "../../components/layout/layout";
 import PageContent from "../common/pageContent";
+import { urlConfig } from "../../components/common/constants";
 
 const adminPanel = () => {
   const router = useRouter();
@@ -12,7 +13,7 @@ const adminPanel = () => {
   const [authMsg, setAuthMsg] = useState("");
   // If user type and IP pass then allow user else redirect
   useEffect(() => {
-    let url = "http://localhost:5000/checkAdmin";
+    let url = urlConfig.url.API_URL_CHECKADMIN;
     fetch(url, {
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +34,7 @@ const adminPanel = () => {
   // Delete a user
   const [delUser, setDelUser] = useState("");
   const deleteUser = (users_ID) => {
-    let url = "http://localhost:5000/deleteUser";
+    let url = urlConfig.url.API_URL_DELETEUSER;
     fetch(url, {
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +61,7 @@ const adminPanel = () => {
   // Promote to admin
   const [promoteAdmin, setPromoteAdmin] = useState("");
   const promote = (users_ID) => {
-    let url = "http://localhost:5000/promoteUser";
+    let url = urlConfig.url.API_URL_PROMOTEUSER;
     fetch(url, {
       headers: {
         "Content-Type": "application/json",
@@ -88,7 +89,7 @@ const adminPanel = () => {
   // Get all users
   const [userData, setUserData] = useState([]);
   useEffect(() => {
-    let url = "http://localhost:5000/getAllUsers";
+    let url = urlConfig.url.API_URL_GETUSERS;
     fetch(url, {
       headers: {
         "Content-Type": "application/json",
@@ -115,9 +116,8 @@ const adminPanel = () => {
   // Orphaned events
   const [emptyEventsMsg, setEmptyEventsMsg] = useState("");
   const emptyEvents = () => {
-    let url = "http://localhost:5000/emptyEvents";
-    let prodUrl = process.env.empty_Events;
-    fetch(prodUrl || url, {
+    let url = urlConfig.url.API_URL_EMPTYEVENTS;
+    fetch(url, {
       headers: {
         "Content-Type": "application/json",
       },

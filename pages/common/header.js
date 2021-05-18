@@ -10,6 +10,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
+import { urlConfig } from "../../components/common/constants";
 
 const Header = (props) => {
   const homeIcon = <FontAwesomeIcon icon={faHome} />;
@@ -21,9 +22,8 @@ const Header = (props) => {
   // Check if admin
   const [adminLink, setAdminLink] = useState("");
   useEffect(() => {
-    let url = "http://localhost:5000/checkAdmin";
-    let prodUrl = "https://schedule-stuff.herokuapp.com/checkAdmin";
-    fetch(prodUrl || url, {
+    let url = urlConfig.url.API_URL_CHECKADMIN;
+    fetch(url, {
       headers: {
         "Content-Type": "application/json",
       },

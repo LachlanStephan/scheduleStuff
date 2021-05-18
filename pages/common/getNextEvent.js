@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
+import { urlConfig } from "../../components/common/constants";
 
 const getUserEvent = (props) => {
-  let url = "http://localhost:5000/getUserEvent";
-  let prodUrl = "https://schedule-stuff.herokuapp.com/getUserEvent";
+  let url = urlConfig.url.API_URL_GETUSEREVENT;
   const [userEvent, setUserEvent] = useState("");
 
   useEffect(() => {
-    fetch(prodUrl || url, {
+    fetch(url, {
       method: "GET",
       credentials: "include",
       headers: {

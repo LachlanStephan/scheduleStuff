@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { urlConfig } from "../../components/common/constants";
+
 const getID = () => {
-  let url = "http://localhost:5000/getID";
-  let prodUrl = "https://schedule-stuff.herokuapp.com/getID";
+  let url = urlConfig.url.API_URL_GETUSERID;
+
   const [id, setID] = useState("");
   useEffect(() => {
-    fetch(prodUrl || url, {
+    fetch(url, {
       headers: {
         "Content-Type": "application/json",
       },

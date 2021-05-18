@@ -5,13 +5,13 @@ import getUserEvent from "../common/getNextEvent";
 import { useEffect, useState } from "react";
 import Router from "next/dist/next-server/server/router";
 import Head from "next/head";
+import { urlConfig } from "../../components/common/constants";
 
 const Home = (props) => {
   const [checkFriend, setCheckFriend] = useState([]);
-  let url = "http://localhost:5000/checkFriend";
-  let prodUrl = "https://schedule-stuff.herokuapp.com/checkFriend";
+  let url = urlConfig.url.API_URL_CHECKFRIEND;
   useEffect(() => {
-    fetch(prodUrl || url, {
+    fetch(url, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -37,9 +37,8 @@ const Home = (props) => {
 
   const [acceptMsg, setAcceptMsg] = useState("");
   const acceptFriend = () => {
-    let url = "http://localhost:5000/acceptFriend";
-    let prodUrl = "https://schedule-stuff.herokuapp.com/acceptFriend";
-    fetch(prodUrl || url, {
+    let url = urlConfig.url.API_URL_ACCEPTFRIEND;
+    fetch(url, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -58,9 +57,8 @@ const Home = (props) => {
 
   const [rejectReq, setRejectReq] = useState("");
   const rejectFriend = () => {
-    let url = "http://localhost:5000/rejectFriend";
-    let prodUrl = "https://schedule-stuff.herokuapp.com/rejectFriend";
-    fetch(prodUrl || url, {
+    let url = urlConfig.url.API_URL_REJECTFRIEND;
+    fetch(url, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -78,9 +76,8 @@ const Home = (props) => {
 
   const [friendsList, setFriendsList] = useState([]);
   useEffect(() => {
-    let url = "http://localhost:5000/friendsList";
-    let prodUrl = "https://schedule-stuff.herokuapp.com/friendsList";
-    fetch(prodUrl || url, {
+    let url = urlConfig.url.API_URL_FRIENDSLIST;
+    fetch(url, {
       headers: {
         "Content-Type": "application/json",
       },
