@@ -13,7 +13,8 @@ const AddSchedule = (props) => {
 
   const onSubmit = (data) => {
     let url = "http://localhost:5000/addSchedule";
-    fetch(url, {
+    let prodUrl = process.env.add_Schedule;
+    fetch(prodUrl || url, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

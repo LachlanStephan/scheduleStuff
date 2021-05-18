@@ -116,7 +116,8 @@ const adminPanel = () => {
   const [emptyEventsMsg, setEmptyEventsMsg] = useState("");
   const emptyEvents = () => {
     let url = "http://localhost:5000/emptyEvents";
-    fetch(url, {
+    let prodUrl = process.env.empty_Events;
+    fetch(prodUrl || url, {
       headers: {
         "Content-Type": "application/json",
       },

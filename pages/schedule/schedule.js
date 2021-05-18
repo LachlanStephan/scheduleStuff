@@ -54,7 +54,8 @@ const Schedule = (props) => {
   // Fetch the users schedule
   useEffect(() => {
     let url = "http://localhost:5000/schedule/" + curDate;
-    fetch(url, {
+    let prodUrl = process.env.schedule + curDate;
+    fetch(prodUrl || url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

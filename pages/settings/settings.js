@@ -15,7 +15,8 @@ const Settings = () => {
 
   const onSubmit = (data) => {
     let url = "http://localhost:5000/updateName";
-    fetch(url, {
+    let prodUrl = process.env.update_Name;
+    fetch(prodUrl || url, {
       method: "PATCH",
       body: JSON.stringify(data),
       headers: {

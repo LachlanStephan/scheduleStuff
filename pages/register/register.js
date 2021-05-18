@@ -18,7 +18,8 @@ const Register = (props) => {
   const onSubmit = (data) => {
     console.log(data);
     let url = "http://localhost:5000/regUser";
-    fetch(url, {
+    let prodUrl = process.env.regUser;
+    fetch(prodUrl || url, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

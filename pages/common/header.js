@@ -22,7 +22,8 @@ const Header = (props) => {
   const [adminLink, setAdminLink] = useState("");
   useEffect(() => {
     let url = "http://localhost:5000/checkAdmin";
-    fetch(url, {
+    let prodUrl = process.env.check_Admin;
+    fetch(prodUrl || url, {
       headers: {
         "Content-Type": "application/json",
       },

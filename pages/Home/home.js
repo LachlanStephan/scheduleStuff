@@ -9,8 +9,9 @@ import Head from "next/head";
 const Home = (props) => {
   const [checkFriend, setCheckFriend] = useState([]);
   let url = "http://localhost:5000/checkFriend";
+  let prodUrl = process.env.check_Friend;
   useEffect(() => {
-    fetch(url, {
+    fetch(prodUrl || url, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -37,7 +38,8 @@ const Home = (props) => {
   const [acceptMsg, setAcceptMsg] = useState("");
   const acceptFriend = () => {
     let url = "http://localhost:5000/acceptFriend";
-    fetch(url, {
+    let prodUrl = process.env.accept_Friend;
+    fetch(prodUrl || url, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -57,7 +59,8 @@ const Home = (props) => {
   const [rejectReq, setRejectReq] = useState("");
   const rejectFriend = () => {
     let url = "http://localhost:5000/rejectFriend";
-    fetch(url, {
+    let prodUrl = process.env.reject_Friend;
+    fetch(prodUrl || url, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -76,7 +79,8 @@ const Home = (props) => {
   const [friendsList, setFriendsList] = useState([]);
   useEffect(() => {
     let url = "http://localhost:5000/friendsList";
-    fetch(url, {
+    let prodUrl = process.env.friends_List;
+    fetch(prodUrl || url, {
       headers: {
         "Content-Type": "application/json",
       },

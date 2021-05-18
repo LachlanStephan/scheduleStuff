@@ -2,9 +2,10 @@ import { react, useEffect, useState } from "react";
 
 const getUserName = (props) => {
   let url = "http://localhost:5000/getUserName";
+  let prodUrl = process.env.getUser_Name;
   const [userName, setuserName] = useState("");
   useEffect(() => {
-    fetch(url, {
+    fetch(prodUrl || url, {
       method: "GET",
       credentials: "include",
       headers: {

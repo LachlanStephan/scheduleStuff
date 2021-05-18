@@ -16,7 +16,8 @@ const Login = () => {
   const onSubmit = (data) => {
     console.log(data);
     let url = "http://localhost:5000/login";
-    fetch(url, {
+    let prodUrl = process.env.login;
+    fetch(prodUrl || url, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

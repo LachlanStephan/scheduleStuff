@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 
 const getUserEvent = (props) => {
   let url = "http://localhost:5000/getUserEvent";
+  let prodUrl = process.env.getUser_Event;
   const [userEvent, setUserEvent] = useState("");
 
   useEffect(() => {
-    fetch(url, {
+    fetch(prodUrl || url, {
       method: "GET",
       credentials: "include",
       headers: {
