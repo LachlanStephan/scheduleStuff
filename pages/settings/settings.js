@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import getID from "../common/getUserID";
 import Head from "next/head";
 import { useTheme } from "next-themes";
+import { urlConfig } from "../common/constants";
 
 const Settings = () => {
   const router = useRouter();
@@ -14,9 +15,8 @@ const Settings = () => {
   const [logoutFail, setLogoutFail] = useState("");
 
   const onSubmit = (data) => {
-    let url = "http://localhost:5000/updateName";
-    let prodUrl = "https://schedule-stuff.herokuapp.com/updateName";
-    fetch(prodUrl || url, {
+    let url = urlConfig.url.API_URL_UPDATENAME;
+    fetch(url, {
       method: "PATCH",
       body: JSON.stringify(data),
       headers: {
@@ -39,9 +39,8 @@ const Settings = () => {
   };
 
   const logout = () => {
-    let url = "http://localhost:5000/logout";
-    let prodUrl = "https://schedule-stuff.herokuapp.com/logout";
-    fetch(prodUrl || url, {
+    let url = urlConfig.url.API_URL_LOGOUT;
+    fetch(url, {
       method: "POST",
       credentials: "include",
     })
@@ -61,9 +60,8 @@ const Settings = () => {
   const [addMsg, setAddMsg] = useState("");
   const [friendID, setFriendID] = useState([]);
   const addFriend = () => {
-    let url = "http://localhost:5000/addFriend";
-    let prodUrl = "https://schedule-stuff.herokuapp.com/addFriend";
-    fetch(prodUrl || url, {
+    let url = urlConfig.url.API_URL_ADDFRIEND;
+    fetch(url, {
       headers: {
         "Content-Type": "application/json",
       },

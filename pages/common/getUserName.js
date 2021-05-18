@@ -1,11 +1,11 @@
-import { react, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { urlConfig } from "./constants";
 
 const getUserName = (props) => {
-  let url = "http://localhost:5000/getUserName";
-  let prodUrl = "https://schedule-stuff.herokuapp.com/getUserName";
+  let url = urlConfig.url.API_URL_GETUSERNAME;
   const [userName, setuserName] = useState("");
   useEffect(() => {
-    fetch(prodUrl || url, {
+    fetch(url, {
       method: "GET",
       credentials: "include",
       headers: {

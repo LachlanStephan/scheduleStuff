@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 // import { io } from "socket.io-client";
 import PacmanLoader from "react-spinners/PacmanLoader";
+import { urlConfig } from "../common/constants";
 
 // MAYBE need to add an edit option to schedule
 
@@ -51,11 +52,13 @@ const Schedule = (props) => {
   // Message for failed delete
   const [failedDel, setFailedDel] = useState("");
 
+  // Set a loading state
+  const [loading, setLoading] = useState(true);
+
   // Fetch the users schedule
   useEffect(() => {
-    let url = "http://localhost:5000/schedule/" + curDate;
-    let prodUrl = "https://schedule-stuff.herokuapp.com/schedule" + curDate;
-    fetch(prodUrl || url, {
+    let url = urlConfig.url.API_URL_SCHEDULE + curDate;
+    fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -114,8 +117,9 @@ const Schedule = (props) => {
     </TrailingActions>
   );
 
-  const [loading, setLoading] = useState(true);
+  // TODO - Add update fetch
 
+  // TODO - Get this working
   // Fetch for add friend to event
   // const [friendID, setFriendID] = useState([]);
 

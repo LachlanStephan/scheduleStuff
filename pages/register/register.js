@@ -4,6 +4,7 @@ import Layout from "../../components/layout/layout";
 import PageContent from "../common/pageContent";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import { urlConfig } from "../common/constants";
 
 const Register = (props) => {
   // For react-hook from
@@ -17,9 +18,8 @@ const Register = (props) => {
 
   const onSubmit = (data) => {
     console.log(data);
-    let url = "http://localhost:5000/regUser";
-    let prodUrl = "https://schedule-stuff.herokuapp.com/regUser";
-    fetch(prodUrl || url, {
+    let url = urlConfig.url.API_URL_REGUSER;
+    fetch(url, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import { useEffect } from "react";
 import { ThemeProvider } from "next-themes";
 import { useRouter } from "next/router";
+import { urlConfig } from "./common/constants";
 
 function MyApp({ Component, pageProps }) {
   // Not sure if I need to specify files or if below is fine
@@ -12,9 +13,8 @@ function MyApp({ Component, pageProps }) {
 
   // To check if user is logged in or not -> send them to login page if no
   useEffect(() => {
-    let url = "http://localhost:5000/checkLogin";
-    let prodUrl = "https://schedule-stuff.herokuapp.com/checkLogin";
-    fetch(prodUrl || url, {
+    let url = urlConfig.url.API_URL_CHECKLOGIN;
+    fetch(url, {
       credentials: "include",
       headers: {
         "Content-Type": "application/json",

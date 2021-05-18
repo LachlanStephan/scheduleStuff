@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";
+import { urlConfig } from "../../common/constants";
 
 const AddSchedule = (props) => {
   const { register, errors, handleSubmit } = useForm();
@@ -12,9 +13,8 @@ const AddSchedule = (props) => {
   const [addEventErrMsg, setaddEventErrMsg] = useState("");
 
   const onSubmit = (data) => {
-    let url = "http://localhost:5000/addSchedule";
-    let prodUrl = "https://schedule-stuff.herokuapp.com/addSchedule";
-    fetch(prodUrl || url, {
+    let url = urlConfig.url.API_URL_ADDSCHEDULE;
+    fetch(url, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

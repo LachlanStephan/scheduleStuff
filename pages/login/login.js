@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { urlConfig } from "../common/constants";
 
 const Login = () => {
   const { register, errors, handleSubmit } = useForm();
@@ -15,9 +16,8 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    let url = "http://localhost:5000/login";
-    let prodUrl = "https://schedule-stuff.herokuapp.com/login";
-    fetch(prodUrl || url, {
+    let url = urlConfig.url.API_URL_LOGIN;
+    fetch(url, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -55,12 +55,12 @@ const Login = () => {
       <PageContent heading="ScheduleStuff" subHeading="" text="" />
       <div>
         <img
-          className="m-auto w-72 h-72"
-          src="/ssIcon.png"
+          className="m-auto w-30 h-30"
+          src="/ssIcon-128x128.png"
           alt="scheduleStuff icon"
         />
       </div>
-      <div className="lg:w-4/12 md:6/12 w-10/12 m-auto shadow-md">
+      <div className="lg:w-4/12 md:6/12 w-10/12 m-auto shadow-md text-gray-700">
         <div className="py-8 px-8 rounded-xl">
           <h1 className="font-medium text-2xl mt-3 text-center">Login</h1>
           <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
