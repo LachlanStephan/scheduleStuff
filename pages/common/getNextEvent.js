@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const getUserEvent = (props) => {
   let url = "http://localhost:5000/getUserEvent";
-  let prodUrl = process.env.getUser_Event;
+  let prodUrl = "https://schedule-stuff.herokuapp.com/getUserEvent";
   const [userEvent, setUserEvent] = useState("");
 
   useEffect(() => {

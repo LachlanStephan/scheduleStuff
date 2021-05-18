@@ -22,7 +22,7 @@ const Header = (props) => {
   const [adminLink, setAdminLink] = useState("");
   useEffect(() => {
     let url = "http://localhost:5000/checkAdmin";
-    let prodUrl = process.env.check_Admin;
+    let prodUrl = "https://schedule-stuff.herokuapp.com/checkAdmin";
     fetch(prodUrl || url, {
       headers: {
         "Content-Type": "application/json",

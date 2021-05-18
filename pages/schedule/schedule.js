@@ -54,7 +54,7 @@ const Schedule = (props) => {
   // Fetch the users schedule
   useEffect(() => {
     let url = "http://localhost:5000/schedule/" + curDate;
-    let prodUrl = process.env.schedule + curDate;
+    let prodUrl = "https://schedule-stuff.herokuapp.com/schedule" + curDate;
     fetch(prodUrl || url, {
       method: "GET",
       headers: {
@@ -87,7 +87,8 @@ const Schedule = (props) => {
   // Fetch called on swipe completion
   const deleteEvent = (event_ID) => {
     let url = "http://localhost:5000/deleteEvent";
-    fetch(url, {
+    let prodUrl = "https://schedule-stuff.herokuapp.com/deleteEvent";
+    fetch(prodUrl || url, {
       credentials: "include",
       method: "POST",
       body: JSON.stringify({ event_ID }),

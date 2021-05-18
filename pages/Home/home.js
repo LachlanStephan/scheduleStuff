@@ -9,7 +9,7 @@ import Head from "next/head";
 const Home = (props) => {
   const [checkFriend, setCheckFriend] = useState([]);
   let url = "http://localhost:5000/checkFriend";
-  let prodUrl = process.env.check_Friend;
+  let prodUrl = "https://schedule-stuff.herokuapp.com/checkFriend";
   useEffect(() => {
     fetch(prodUrl || url, {
       method: "GET",
@@ -38,7 +38,7 @@ const Home = (props) => {
   const [acceptMsg, setAcceptMsg] = useState("");
   const acceptFriend = () => {
     let url = "http://localhost:5000/acceptFriend";
-    let prodUrl = process.env.accept_Friend;
+    let prodUrl = "https://schedule-stuff.herokuapp.com/acceptFriend";
     fetch(prodUrl || url, {
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const Home = (props) => {
   const [rejectReq, setRejectReq] = useState("");
   const rejectFriend = () => {
     let url = "http://localhost:5000/rejectFriend";
-    let prodUrl = process.env.reject_Friend;
+    let prodUrl = "https://schedule-stuff.herokuapp.com/rejectFriend";
     fetch(prodUrl || url, {
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const Home = (props) => {
   const [friendsList, setFriendsList] = useState([]);
   useEffect(() => {
     let url = "http://localhost:5000/friendsList";
-    let prodUrl = process.env.friends_List;
+    let prodUrl = "https://schedule-stuff.herokuapp.com/friendsList";
     fetch(prodUrl || url, {
       headers: {
         "Content-Type": "application/json",
