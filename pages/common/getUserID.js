@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { urlConfig } from "./constants";
+import { urlConfig } from "../../components/common/constants";
 
 const getID = () => {
   let url = urlConfig.url.API_URL_GETUSERID;

@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import getID from "../common/getUserID";
 import Head from "next/head";
 import { useTheme } from "next-themes";
-import { urlConfig } from "../common/constants";
+import { urlConfig } from "../../components/common/constants";
 
 const Settings = () => {
   const router = useRouter();

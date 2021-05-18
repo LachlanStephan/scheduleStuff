@@ -3,7 +3,7 @@ import "../styles/globals.css";
 import { useEffect } from "react";
 import { ThemeProvider } from "next-themes";
 import { useRouter } from "next/router";
-import { urlConfig } from "./common/constants";
+import { urlConfig } from "../components/common/constants";
 
 function MyApp({ Component, pageProps }) {
   // Not sure if I need to specify files or if below is fine

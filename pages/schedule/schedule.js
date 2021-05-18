@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 // import { io } from "socket.io-client";
 import PacmanLoader from "react-spinners/PacmanLoader";
-import { urlConfig } from "../common/constants";
+import { urlConfig } from "../../components/common/constants";
 
 // MAYBE need to add an edit option to schedule
 

@@ -10,7 +10,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
-import { urlConfig } from "./constants";
+import { urlConfig } from "../../components/common/constants";
 
 const Header = (props) => {
   const homeIcon = <FontAwesomeIcon icon={faHome} />;

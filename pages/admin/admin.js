@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Layout from "../../components/layout/layout";
 import PageContent from "../common/pageContent";
-import { urlConfig } from "../common/constants";
+import { urlConfig } from "../../components/common/constants";
 
 const adminPanel = () => {
   const router = useRouter();

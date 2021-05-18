@@ -5,7 +5,7 @@ import getUserEvent from "../common/getNextEvent";
 import { useEffect, useState } from "react";
 import Router from "next/dist/next-server/server/router";
 import Head from "next/head";
-import { urlConfig } from "../common/constants";
+import { urlConfig } from "../../components/common/constants";
 
 const Home = (props) => {
   const [checkFriend, setCheckFriend] = useState([]);

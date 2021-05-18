@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { urlConfig } from "./constants";
+import { urlConfig } from "../../components/common/constants";
 
 const getUserName = (props) => {
   let url = urlConfig.url.API_URL_GETUSERNAME;
