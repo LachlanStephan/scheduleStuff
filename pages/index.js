@@ -5,8 +5,7 @@ export default function App() {
   return (
     <>
       <Head>
-        {" "}
-        <title>scheduleStuff</title>
+        <link rel="shortcut icon" href="#"></link>;<title>scheduleStuff</title>
       </Head>
       <Login />
     </>

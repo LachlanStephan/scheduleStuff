@@ -1,12 +1,6 @@
 import react, { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import Layout from "../../components/layout/layout";
-// import {
-// emailErrorFunc,
-//   passwordErrorFunc,
-//   fNameErrorFunc,
-//   lNameErrorFunc,
-// } from "../../components/errorFunctions/errorFunctions";
 import PageContent from "../common/pageContent";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
@@ -24,7 +18,8 @@ const Register = (props) => {
   const onSubmit = (data) => {
     console.log(data);
     let url = "http://localhost:5000/regUser";
-    fetch(url, {
+    let prodUrl = process.env.regUser;
+    fetch(prodUrl || url, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

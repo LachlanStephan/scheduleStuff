@@ -1,10 +1,11 @@
 import { react, useEffect, useState } from "react";
 
-const getUSerName = (props) => {
+const getUserName = (props) => {
   let url = "http://localhost:5000/getUserName";
+  let prodUrl = process.env.getUser_Name;
   const [userName, setuserName] = useState("");
   useEffect(() => {
-    fetch(url, {
+    fetch(prodUrl || url, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -14,7 +15,7 @@ const getUSerName = (props) => {
       .then((res) => res)
       .then((data) => {
         if (data.status === 400) {
-          setuserName("Sorry we couldn't get your user name");
+          setuserName("unknown");
         }
         if (data.status === 200) {
           data.json().then((data) => {
@@ -26,4 +27,4 @@ const getUSerName = (props) => {
 
   return userName;
 };
-export default getUSerName;
+export default getUserName;

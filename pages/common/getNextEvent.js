@@ -2,19 +2,25 @@ import { useEffect, useState } from "react";
 
 const getUserEvent = (props) => {
   let url = "http://localhost:5000/getUserEvent";
+  let prodUrl = process.env.getUser_Event;
   const [userEvent, setUserEvent] = useState("");
+
   useEffect(() => {
-    fetch(url, {
+    fetch(prodUrl || url, {
       method: "GET",
       credentials: "include",
-      headerser: {
+      headers: {
         "Content-Type": "application/json",
       },
     })
       .then((res) => res)
       .then((data) => {
+        console.log(data.status, "getEvent");
         if (data.status === 400) {
-          setUserEvent("Sorry we couldn't get your next event");
+          setUserEvent("No upcoming events");
+        }
+        if (data.status === 204) {
+          setUserEvent("No upcoming events");
         }
         if (data.status === 200) {
           data.json().then((data) => {
