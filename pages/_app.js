@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
       method: "GET",
     }).then((res) => {
       console.log(res.status);
-      if (res.status === 403) {
+      if (res.status === 204) {
         localStorage.setItem("loggedIn", "false");
         router.push("/login/login");
         console.log("Not logged in");
