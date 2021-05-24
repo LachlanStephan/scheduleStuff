@@ -15,7 +15,7 @@ const prod = {
     API_URL_FRIENDSLIST: "https://schedule-stuff.herokuapp.com/friendsList",
     API_URL_LOGIN: "https://schedule-stuff.herokuapp.com/login",
     API_URL_REGUSER: "https://schedule-stuff.herokuapp.com/regUser",
-    API_URL_SCHEDULE: "https://schedule-stuff.herokuapp.com/schedule",
+    API_URL_SCHEDULE: "https://schedule-stuff.herokuapp.com/schedule/",
     API_URL_DELETEEVENT: "https://schedule-stuff.herokuapp.com/deleteEvent",
     API_URL_ADDSCHEDULE: "https://schedule-stuff.herokuapp.com/addSchedule",
     API_URL_UPDATENAME: "https://schedule-stuff.herokuapp.com/updateName",

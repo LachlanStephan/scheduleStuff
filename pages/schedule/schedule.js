@@ -49,9 +49,6 @@ const Schedule = (props) => {
   // Set the fetch to current date
   const [curDate, setCurDate] = useState(new Date());
 
-  // Message for failed delete
-  const [failedDel, setFailedDel] = useState("");
-
   // Set a loading state
   const [loading, setLoading] = useState(true);
 
@@ -88,6 +85,7 @@ const Schedule = (props) => {
   }, [curDate]);
 
   // Fetch called on swipe completion
+  const [failedDel, setFailedDel] = useState("");
   const deleteEvent = (event_ID) => {
     let url = "http://localhost:5000/deleteEvent";
     let prodUrl = "https://schedule-stuff.herokuapp.com/deleteEvent";
