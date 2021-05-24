@@ -152,7 +152,6 @@ const Settings = () => {
               value={friendID}
               onBlur={valFriendID}
               required={true}
-              ref={register({ required: true })}
               onChange={(e) => {
                 setFriendID(e.target.value);
               }}
