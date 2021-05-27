@@ -16,6 +16,15 @@ Check this repo for instructions on how to set up the server/db
 
 - visit https://github.com/LachlanStephan/scheduleStuffBackend
 
+## Roadmap
+
+### This will be where future features and plans are documented
+- Add friends to events
+- Edit events
+- Autocomplete on times/dates
+- Move time/dates to be a dropdown instead of input
+- Design updates
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
